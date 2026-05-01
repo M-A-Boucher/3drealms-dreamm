@@ -1,0 +1,617 @@
+//
+// Duke Nukem 3D
+//
+desc[3dr-duke3d]:
+
+name = Duke Nukem 3D
+icon = 3dr-duke3d.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\DUKE3D.EXE
+mips = $(MIPS_MAX)
+ramkb = 16384
+filter = 3drealms, fps
+
+//
+// controls configuration
+//
+config[controls]:
+    title = Controls Configuration
+    option[classic]:     
+        name = Classic (Default); priority = 1
+        KEYBINDS = [[[$(CRLF)
+            Move_Forward = "Up" "Kpad8"
+            Move_Backward = "Down" "Kpad2"
+            Turn_Left = "Left" "Kpad4"
+            Turn_Right = "Right" "KPad6"
+            Strafe = "LAlt" "RAlt"
+            Fire = "LCtrl" "RCtrl"
+            Open = "Space" ""
+            Run = "LShift" "RShift"
+            AutoRun = "CapLck" ""
+            Jump = "A" "/"
+            Crouch = "Z" ""
+            Look_Up = "PgUp" "Kpad9"
+            Look_Down = "PgDn" "Kpad3"
+            Look_Left = "Insert" "Kpad0"
+            Look_Right = "Delete" "Kpad."
+            Strafe_Left = "," ""
+            Strafe_Right = "." ""
+            Aim_Up = "Home" "KPad7"
+            Aim_Down = "End" "Kpad1"
+        ]]]
+        MOUSEBINDS = [[[$(CRLF)
+            MouseAiming = 0
+            MouseButton0 = "Fire"
+            MouseButtonClicked0 = ""
+            MouseButton1 = "Strafe"
+            MouseButtonClicked1 = "Open"
+            MouseButton2 = "Move_Forward"
+            MouseButtonClicked2 = ""
+        ]]]
+    end
+    option[modern]:     
+        name = Modern (WASD + Mouse)
+        KEYBINDS = [[[$(CRLF)
+            Move_Forward = "W" "Kpad8"
+            Move_Backward = "S" "Kpad2"
+            Turn_Left = "" "Kpad4"
+            Turn_Right = "" "KPad6"
+            Strafe = "LAlt" "RAlt"
+            Fire = "" "RCtrl"
+            Open = "" ""
+            Run = "LShift" "RShift"
+            AutoRun = "CapLck" "\"
+            Jump = "Space" "/"
+            Crouch = "LCtrl" ""
+            Look_Up = "PgUp" "Kpad9"
+            Look_Down = "PgDn" "Kpad3"
+            Look_Left = "Insert" "Kpad0"
+            Look_Right = "Delete" "Kpad."
+            Strafe_Left = "A" ""
+            Strafe_Right = "D" ""
+            Aim_Up = "Home" "KPad7"
+            Aim_Down = "End" "Kpad1"
+        ]]]
+        MOUSEBINDS = [[[$(CRLF)
+            MouseAiming = 0
+            MouseButton0 = "Fire"
+            MouseButtonClicked0 = ""
+            MouseButton1 = "Open"
+            MouseButtonClicked1 = "Quick_Kick"
+            MouseButton2 = "Center_View"
+            MouseButtonClicked2 = ""
+            MouseAnalogScale1 = -65536
+        ]]]
+    end
+    option[moderninv]:     
+        name = Modern (WASD + Inverted Mouse)
+        KEYBINDS = [[[$(CRLF)
+            Move_Forward = "W" "Kpad8"
+            Move_Backward = "S" "Kpad2"
+            Turn_Left = "" "Kpad4"
+            Turn_Right = "" "KPad6"
+            Strafe = "LAlt" "RAlt"
+            Fire = "" "RCtrl"
+            Open = "" ""
+            Run = "LShift" "RShift"
+            AutoRun = "CapLck" "\"
+            Jump = "Space" "/"
+            Crouch = "LCtrl" ""
+            Look_Up = "PgUp" "Kpad9"
+            Look_Down = "PgDn" "Kpad3"
+            Look_Left = "Insert" "Kpad0"
+            Look_Right = "Delete" "Kpad."
+            Strafe_Left = "A" ""
+            Strafe_Right = "D" ""
+            Aim_Up = "Home" "KPad7"
+            Aim_Down = "End" "Kpad1"
+        ]]]
+        MOUSEBINDS = [[[$(CRLF)
+            MouseAiming = 0
+            MouseButton0 = "Fire"
+            MouseButtonClicked0 = ""
+            MouseButton1 = "Open"
+            MouseButtonClicked1 = "Quick_Kick"
+            MouseButton2 = "Center_View"
+            MouseButtonClicked2 = ""
+            MouseAnalogScale1 = 65536
+        ]]]
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[vga]:     
+        name = $(VGA_NAME); priority = 1
+        videohw = vga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 2
+            ScreenWidth = 320
+            ScreenHeight = 200
+        ]]]
+    end
+    option[640x400]:     
+        name = 640x400
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 640
+            ScreenHeight = 400
+        ]]]
+    end
+    option[640x480]:     
+        name = 640x480
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 640
+            ScreenHeight = 480
+        ]]]
+    end
+    option[800x600]:     
+        name = 800x600
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 800
+            ScreenHeight = 600
+        ]]]
+    end
+    option[1024x768]:     
+        name = 1024x768
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 1024
+            ScreenHeight = 768
+        ]]]
+    end
+
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicDevice = 3
+        ]]]
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicDevice = 1
+        ]]]
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME); priority = 1
+        audiohw = sb16+gmidi
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicDevice = 4
+        ]]]
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DUKE3D.CFG
+    contents = [[[$(CRLF)
+        [Setup]
+        ;Setup File for Duke Nukem 3D
+        $(SETUP_VERSION)
+        ; 
+        ;
+        [Screen Setup]
+        ; 
+        ; 
+        ;ScreenMode
+        ; - Chained - 0
+        ; - Vesa 2.0 - 1
+        ; - Screen Buffered - 2
+        ; - Tseng optimized - 3
+        ; - Paradise optimized - 4
+        ; - S3 optimized - 5
+        ; - RedBlue Stereo - 7
+        ; - Crystal Eyes - 6
+        ; 
+        ;ScreenWidth passed to engine
+        ; 
+        ;ScreenHeight passed to engine
+        ; 
+        ; 
+        $(VIDEO_CONFIG)
+        ; 
+        ; 
+        [Sound Setup]
+        ; 
+        ;MusicDevice
+        ; - No device           - 13
+        ; - PC-Speaker (N/A)    - 12
+        ; - Tandy Sound System  - 11
+        ; - Disney Sound System - 10
+        ; - Gravis Ultra Sound  - 9
+        ; - Ensoniq Soundscape  - 8
+        ; - WaveBlaster         - 7
+        ; - SB AWE 32           - 6
+        ; - Sound Canvas        - 5
+        ; - General Midi        - 4
+        ; - Adlib               - 3
+        ; - Sound Man 16        - 2
+        ; - Pro Audio Spectrum  - 1
+        ; - Sound Blaster       - 0
+        ;
+        ;
+        ;FxDevice
+        ; - No device           - 13
+        ; - PC-Speaker (N/A)    - 12
+        ; - Tandy Sound System  - 11
+        ; - Disney Sound System - 10
+        ; - Gravis Ultra Sound  - 9
+        ; - Ensoniq Soundscape  - 8
+        ; - SB AWE 32           - 6
+        ; - Sound Man 16        - 2
+        ; - Pro Audio Spectrum  - 1
+        ; - Sound Blaster       - 0
+        ;
+        ;
+        FXDevice = 0
+        $(MUSIC_CONFIG)
+        FXVolume = 220
+        MusicVolume = 200
+        NumVoices = 8
+        NumChannels = 2
+        NumBits = 16
+        MixRate = 22000
+        MidiPort = 0x330
+        BlasterAddress = 0x220
+        BlasterType = 6
+        BlasterInterrupt = 7
+        BlasterDma8 = 1
+        BlasterDma16 = 5
+        BlasterEmu = 0x620
+        ReverseStereo = 0
+        ; 
+        ; 
+        [KeyDefinitions]
+        ; 
+        ; 
+        ; Set through DREAMM
+        $(KEYBINDS)
+        Weapon_1 = "1" ""
+        Weapon_2 = "2" ""
+        Weapon_3 = "3" ""
+        Weapon_4 = "4" ""
+        Weapon_5 = "5" ""
+        Weapon_6 = "6" ""
+        Weapon_7 = "7" ""
+        Weapon_8 = "8" ""
+        Weapon_9 = "9" ""
+        Weapon_10 = "0" ""
+        Inventory = "Enter" "KpdEnt"
+        Inventory_Left = "[" ""
+        Inventory_Right = "]" ""
+        Holo_Duke = "H" ""
+        Jetpack = "J" ""
+        NightVision = "N" ""
+        MedKit = "M" ""
+        TurnAround = "BakSpc" ""
+        SendMessage = "T" ""
+        Map = "Tab" ""
+        Shrink_Screen = "-" "Kpad-"
+        Enlarge_Screen = "=" "Kpad+"
+        Center_View = "KPad5" ""
+        Holster_Weapon = "ScrLck" ""
+        Show_Opponents_Weapon = "W" ""
+        Map_Follow_Mode = "F" ""
+        See_Coop_View = "K" ""
+        Mouse_Aiming = "U" ""
+        Toggle_Crosshair = "I" ""
+        Steroids = "R" ""
+        Quick_Kick = "`" ""
+        Next_Weapon = "E" ""
+        Previous_Weapon = "Q" ""
+        ; 
+        ; 
+        [Controls]
+        ; 
+        ; 
+        ;Controls
+        ; 
+        ;ControllerType
+        ; - Keyboard                  - 0
+        ; - Keyboard and Mouse        - 1
+        ; - Keyboard and Joystick     - 2
+        ; - Keyboard and Gamepad      - 4
+        ; - Keyboard and External     - 3
+        ; - Keyboard and FlightStick  - 5
+        ; - Keyboard and ThrustMaster - 6
+        ; 
+        ; 
+        ControllerType = 1
+        JoystickPort = 0
+        MouseSensitivity = 49152
+        ExternalFilename = "EXTERNAL.EXE"
+        EnableRudder = 0
+        ; Set through DREAMM
+        $(MOUSEBINDS)
+        JoystickButton0 = "Fire"
+        JoystickButtonClicked0 = ""
+        JoystickButton1 = "Strafe"
+        JoystickButtonClicked1 = "Inventory"
+        JoystickButton2 = "Run"
+        JoystickButtonClicked2 = "Jump"
+        JoystickButton3 = "Open"
+        JoystickButtonClicked3 = "Crouch"
+        JoystickButton4 = "Aim_Down"
+        JoystickButtonClicked4 = ""
+        JoystickButton5 = "Look_Right"
+        JoystickButtonClicked5 = ""
+        JoystickButton6 = "Aim_Up"
+        JoystickButtonClicked6 = ""
+        JoystickButton7 = "Look_Left"
+        JoystickButtonClicked7 = ""
+        MouseAnalogAxes0 = "analog_turning"
+        MouseDigitalAxes0_0 = ""
+        MouseDigitalAxes0_1 = ""
+        MouseAnalogScale0 = 65536
+        MouseAnalogAxes1 = "analog_moving"
+        MouseDigitalAxes1_0 = ""
+        MouseDigitalAxes1_1 = ""
+        JoystickAnalogAxes0 = "analog_turning"
+        JoystickDigitalAxes0_0 = ""
+        JoystickDigitalAxes0_1 = ""
+        JoystickAnalogScale0 = 65536
+        JoystickAnalogAxes1 = "analog_moving"
+        JoystickDigitalAxes1_0 = ""
+        JoystickDigitalAxes1_1 = ""
+        JoystickAnalogScale1 = 65536
+        JoystickAnalogAxes2 = "analog_strafing"
+        JoystickDigitalAxes2_0 = ""
+        JoystickDigitalAxes2_1 = ""
+        JoystickAnalogScale2 = 65536
+        JoystickAnalogAxes3 = ""
+        JoystickDigitalAxes3_0 = "Run"
+        JoystickDigitalAxes3_1 = ""
+        JoystickAnalogScale3 = 65536
+        GamePadDigitalAxes0_0 = "Turn_Left"
+        GamePadDigitalAxes0_1 = "Turn_Right"
+        GamePadDigitalAxes1_0 = "Move_Forward"
+        GamePadDigitalAxes1_1 = "Move_Backward"
+        ; 
+        ; 
+        [Comm Setup]
+        ; 
+        ; 
+        ComPort = 2
+        IrqNumber = ~
+        UartAddress = ~
+        PortSpeed = 9600
+        ToneDial = 1
+        SocketNumber = ~
+        NumberPlayers = 2
+        ModemName = ""
+        InitString = "ATZ"
+        HangupString = "ATH0=0"
+        DialoutString = ""
+        PlayerName = "DUKE"
+        RTSName = "DUKE.RTS"
+        PhoneNumber = ""
+        ConnectType = 0
+        CommbatMacro#0 = "An inspiration for birth control."
+        CommbatMacro#1 = "You're gonna die for that!"
+        CommbatMacro#2 = "It hurts to be you."
+        CommbatMacro#3 = "Lucky Son of a Bitch."
+        CommbatMacro#4 = "Hmmm....Payback time."
+        CommbatMacro#5 = "You bottom dwelling scum sucker."
+        CommbatMacro#6 = "Damn, you're ugly."
+        CommbatMacro#7 = "Ha ha ha...Wasted!"
+        CommbatMacro#8 = "You suck!"
+        CommbatMacro#9 = "AARRRGHHHHH!!!"
+        PhoneName#0 = ""
+        PhoneNumber#0 = ""
+        PhoneName#1 = ""
+        PhoneNumber#1 = ""
+        PhoneName#2 = ""
+        PhoneNumber#2 = ""
+        PhoneName#3 = ""
+        PhoneNumber#3 = ""
+        PhoneName#4 = ""
+        PhoneNumber#4 = ""
+        PhoneName#5 = ""
+        PhoneNumber#5 = ""
+        PhoneName#6 = ""
+        PhoneNumber#6 = ""
+        PhoneName#7 = ""
+        PhoneNumber#7 = ""
+        PhoneName#8 = ""
+        PhoneNumber#8 = ""
+        PhoneName#9 = ""
+        PhoneNumber#9 = ""
+        $(EXTRA_ATOMIC_CONFIGS)
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+
+dynamicfile[]:
+    path = $(rootpath)\CDROM.INI
+    contents = [[[$(CRLF)
+        D:\SUPPORT\
+    ]]]
+end
+
+//
+// v1.1, Demo
+//
+demo[v1.1-demo]:
+    name = v1.1, Demo
+    SETUP_VERSION = SetupVersion = "1.1"
+ launch = COMMIT.EXE
+    anchorfile = DUKE3D.EXE
+    file[]: crc = f42f12ba; size =     25782; name = COMMIT.EXE
+    file[]: crc = 0d799b48; size =     23682; name = DEFS.CON
+    file[]: crc = 64dc26c2; size =      8370; name = DEMO1.DMO
+    file[]: crc = b0346c5d; size =      5385; name = DEMO2.DMO
+    file[]: crc = 1f06482a; size =     13940; name = DEMO3.DMO
+    file[]: crc = 300c624f; size =     69427; name = DN3DHELP.EXE
+    file[]: crc = 504086c1; size =    188954; name = DUKE.RTS
+    file[]: crc = 4c4aaefd; size =   1076339; name = DUKE3D.EXE
+    file[]: crc = 912e1e8d; size =  10442980; name = DUKE3D.GRP
+    file[]: crc = cb0b4445; size =     71320; name = GAME.CON
+    file[]: crc = 55eff38f; size =      4126; name = MODEM.PCK
+    file[]: crc = 4f94de38; size =     74142; name = SETMAIN.EXE
+    file[]: crc = f8dbc57d; size =     27153; name = SETUP.EXE
+    file[]: crc = f05d3e44; size =      6897; name = ULTRAMID.INI
+    file[]: crc = 687f9b5a; size =     33407; name = USER.CON
+end
+
+//
+// v1.3D
+//
+game[v1.3D]:
+    name = v1.3D
+    SETUP_VERSION = SetupVersion = "1.3D"
+    anchorfile = DUKE3D.EXE
+    file[]: crc = 06602bb8; size =     25942; name = COMMIT.EXE
+    file[]: crc = 70ef6dfa; size =     28893; name = DEFS.CON
+    file[]: crc = b8f0331b; size =     22884; name = DEMO1.DMO
+    file[]: crc = b060c397; size =     31538; name = DEMO2.DMO
+    file[]: crc = 64e0e19a; size =     73594; name = DN3DHELP.EXE
+    file[]: crc = 504086c1; size =    188954; name = DUKE.RTS
+    file[]: crc = 1b50472d; size =   1179131; name = DUKE3D.EXE
+    file[]: crc = bbc9ce44; size =  26524524; name = DUKE3D.GRP
+    file[]: crc = cc08e0a8; size =     99639; name = GAME.CON
+    file[]: crc = 9bc828c4; size =      4125; name = MODEM.PCK
+    file[]: crc = 5288f18f; size =    576639; name = SETMAIN.EXE
+    file[]: crc = f8dbc57d; size =     27153; name = SETUP.EXE
+    file[]: crc = 5ae1f4fd; size =      6871; name = ULTRAMID.INI
+    file[]: crc = 20446233; size =     36960; name = USER.CON
+end
+
+//
+// v1.3D, Korean
+//
+game[v1.3D-kr]:
+    name = v1.3D, Korean
+    SETUP_VERSION = SetupVersion = "1.3D"
+    imports = v1.3D
+    anchorfile = DUKE3D.EXE
+    file[]: crc = 399d5e57; size =   1179131; name = DUKE3D.1
+    file[]: crc = 9eb379cf; size =      4000; name = DUKE3D.BIN
+    file[]: crc = de647d35; size =      5313; name = DUKE3D.EXE
+    file[]: crc = aa4f6a40; size =  26385383; name = DUKE3D.GRP
+    file[]: crc = df938cf7; size =   1179131; name = DUKE3D.PRG
+end
+
+//
+// v1.4, Plutonium Pack
+//
+upgrader[v1.4]:
+    name = v1.4, Plutonium Pack
+    upgradeids = v1.3D
+    SETUP_VERSION = SetupVersion = "1.4"
+    launch = INST.EXE
+    anchorfile = INST.EXE
+    file[]: crc = 7a4b1926; size =    144074; name = INST.EXE
+    file[]: crc = 138977d8; size =     61311; name = PLUTINST\PATCH.EXE
+    file[]: crc = 6b0a6153; size =       535; name = PLUTINST\PATCH.RTP
+    file[]: crc = fe8d1d2e; size =  22083746; name = PLUTINST\PATCH1.RTP
+    file[]: crc = 7ee75a8f; size =      2775; name = PLUTINST\PATCHME.EXE
+end
+
+//
+// v1.5, Atomic Edition
+//
+game[v1.5]:
+    name = v1.5, Atomic Edition
+    SETUP_VERSION = SetupVersion = "1.4"
+    EXTRA_ATOMIC_CONFIGS = [[[$(CRLF)
+        Shadows = 1
+        Password = ""
+        Detail = 1
+        Tilt = 1
+        Messages = 1
+        Out = 0
+        ScreenSize = 8
+        ScreenGamma = 0
+        ;
+        SoundToggle = 1
+        VoiceToggle = 1
+        AmbienceToggle = 1
+        MusicToggle = 1
+        ;
+        GameMouseAiming = 0
+        AimingFlag = 0
+        ;
+        PhoneName#10 = ""
+        PhoneNumber#10 = ""
+        PhoneName#11 = ""
+        PhoneNumber#11 = ""
+        PhoneName#12 = ""
+        PhoneNumber#12 = ""
+        PhoneName#13 = ""
+        PhoneNumber#13 = ""
+        PhoneName#14 = ""
+        PhoneNumber#14 = ""
+        PhoneName#15 = ""
+        PhoneNumber#15 = ""
+        [Misc]
+        Executions = 1
+        RunMode = 0
+        Crosshairs = 0
+        WeaponChoice0 = 3
+        WeaponChoice1 = 4
+        WeaponChoice2 = 5
+        WeaponChoice3 = 7
+        WeaponChoice4 = 8
+        WeaponChoice5 = 6
+        WeaponChoice6 = 0
+        WeaponChoice7 = 2
+        WeaponChoice8 = 9
+        WeaponChoice9 = 1
+    ]]]
+    imports = v1.3D
+    anchorfile = DUKE3D.EXE
+    anchordepth = 1
+    file[]: crc = 80deedcc; size =     76554; name = COMMIT.EXE
+    file[]: crc = a869321d; size =     35992; name = DEFS.CON
+    file[]: crc = c4cc3006; size =     11140; name = DEMO1.DMO
+    file[]: crc = b5bef841; size =     16417; name = DEMO2.DMO
+    file[]: crc = 30aa57c9; size =      9225; name = DEMO3.DMO
+    file[]: crc = 18fa7177; size =     80316; name = DN3DHELP.EXE
+    file[]: crc = 0167875d; size =   1246231; name = DUKE3D.EXE
+    file[]: crc = fd3dcff1; size =  44356548; name = DUKE3D.GRP
+    file[]: crc = e5fdae10; size =    151190; name = GAME.CON
+    file[]: crc = 55eff38f; size =      4126; name = MODEM.PCK
+    file[]: crc = c348d9dd; size =    793989; name = SETMAIN.EXE
+    file[]: crc = 61c6108f; size =     37853; name = SETUP.EXE
+    file[]: crc = 0927f972; size =     45482; name = USER.CON
+    file[]: crc = 12059b59; size = 479985668; name = CD\SUPPORT\DUKE3D.IDF
+end
+
+//
+// v1.5 Atomic Edition, SE
+//
+game[v1.5W]:
+    name = v1.5 Atomic Edition, SE
+    imports = v1.5
+    anchorfile = DUKE3D.EXE
+    anchordepth = 1
+    file[]: crc = c99cdb10; size =   1246439; name = DUKE3D.EXE
+end
+
+end

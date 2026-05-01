@@ -1,0 +1,207 @@
+//
+// Blake Stone: Aliens of Gold
+//
+desc[apog-bstone1]:
+
+name = Blake Stone: Aliens of Gold
+icon = apog-bstone1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = BS_AOG.EXE
+mips = $(MIPS_386DX_33)
+ramkb = 4096
+filter = apogee software, action
+audiohw = sb16
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        audiohw = sb16
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM21.BAT
+    contents = [[[$(CRLF)
+        INSTALL.EXE
+        BS_R.EXE
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM30.BAT
+    contents = [[[$(CRLF)
+        INSTALL.EXE
+        BLAKER.EXE
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM3X.BAT
+    contents = [[[$(CRLF)
+        COPY BS3_1-6.1+BS3_1-6.2+BS3_1-6.3 BS3_1-6.EXE
+        BS3_1-6.EXE
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = A:\        ; srcpath = ram              ; condition = is_installer(); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[autoinstall]:
+    condition = is_installer()
+    code = [[[$(CRLF)
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("C");
+    ]]]
+end
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = BS_AOG.EXE
+    file[]: crc = 9d280de5; size =      1280; name = AUDIOHED.BS1
+    file[]: crc = 01e2c054; size =    162268; name = AUDIOT.BS1
+    file[]: crc = 1714a63c; size =    124507; name = BS_AOG.EXE
+    file[]: crc = be1cd872; size =     18977; name = IANIM.BS1
+    file[]: crc = 15e1da6c; size =     10748; name = JAMERR.EXE
+    file[]: crc = 1de0a684; size =      9799; name = JM_ERROR.H
+    file[]: crc = 48f22e92; size =       834; name = MAPHEAD.BS1
+    file[]: crc = 8e18f266; size =     91100; name = MAPTEMP.BS1
+    file[]: crc = 0e6b7a68; size =    276784; name = SANIM.BS1
+    file[]: crc = fdc95942; size =      1024; name = VGADICT.BS1
+    file[]: crc = ae0c94a0; size =    620645; name = VGAGRAPH.BS1
+    file[]: crc = ffeaa968; size =       600; name = VGAHEAD.BS1
+    file[]: crc = 0dd867d9; size =   1996008; name = VSWAP.BS1
+end
+
+//
+// v1.0
+//
+installer[v1.0-installer]:
+    name = v1.0, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = BLAKE.EXE
+    anchorfile = BLAKE.EXE
+    file[]: crc = afec08db; size =   1302233; name = BLAKE.EXE
+end
+
+//
+// v2.1
+//
+game[v2.1]:
+    name = v2.1
+    anchorfile = BS_AOG.EXE
+    file[]: crc = 9397d376; size =      1280; name = AUDIOHED.BS6
+    file[]: crc = b33a17d2; size =    267636; name = AUDIOT.BS6
+    file[]: crc = 23da7b5a; size =    139809; name = BS_AOG.EXE
+    file[]: crc = 057b9573; size =    186221; name = EANIM.BS6
+    file[]: crc = 3775545e; size =       447; name = FILE_ID.DIZ
+    file[]: crc = 8b0781a2; size =    219918; name = GANIM.BS6
+    file[]: crc = be1cd872; size =     18977; name = IANIM.BS6
+    file[]: crc = 48671eb9; size =     11212; name = JAMERR.EXE
+    file[]: crc = 402b8a03; size =      9883; name = JM_ERROR.H
+    file[]: crc = d8e86d2c; size =       834; name = MAPHEAD.BS6
+    file[]: crc = 73d47d3d; size =    526196; name = MAPTEMP.BS6
+    file[]: crc = 0e6b7a68; size =    276784; name = SANIM.BS6
+    file[]: crc = 4e8374c6; size =     73724; name = SETBLAST.EXE
+    file[]: crc = 0b8a2614; size =   2878696; name = SVSWAP.BS6
+    file[]: crc = 05701230; size =      1024; name = VGADICT.BS6
+    file[]: crc = ad97370e; size =    599397; name = VGAGRAPH.BS6
+    file[]: crc = 27023c24; size =       672; name = VGAHEAD.BS6
+    file[]: crc = 069f1d34; size =   2767080; name = VSWAP.BS6
+end
+
+//
+// v2.1, 2x1.44M, Install 
+//
+installer[v2.1-2x1.44m-install]:
+    name = v2.1, 2x1.44M, Install 
+    installid = v2.1
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = DREAMM21.BAT
+    anchorfile = BS_R._2
+    file[]: crc = 8b4125b2; size =   1383424; name = BS_R._1
+    file[]: crc = b383fa7f; size =   1456525; name = BS_R._2
+    file[]: crc = 93ea0729; size =     34136; name = INSTALL.EXE
+end
+
+//
+// v3.0
+//
+game[v3.0]:
+    name = v3.0
+    imports = v2.1
+    anchorfile = BS_AOG.EXE
+    file[]: crc = bee645f5; size =   2864310; name = BLAKER.EXE
+    file[]: crc = 7c401197; size =    139809; name = BS_AOG.EXE
+    file[]: crc = 4e8374c6; size =     73724; remove = SETBLAST.EXE
+    file[]: crc = fd93d1f8; size =      1024; name = VGADICT.BS6
+    file[]: crc = 9a6397d6; size =    709440; name = VGAGRAPH.BS6
+    file[]: crc = a25c3be6; size =       678; name = VGAHEAD.BS6
+end
+
+//
+// v3.0, 2x1.44M, Install 
+//
+installer[v3.0-2x1.44m-install]:
+    name = v3.0, 2x1.44M, Install 
+    installid = v3.0
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = DREAMM30.BAT
+    anchorfile = BS30_1-6._2
+    file[]: crc = c346c8c4; size =   1408000; name = BS30_1-6._1
+    file[]: crc = 69a22bf5; size =   1456648; name = BS30_1-6._2
+    file[]: crc = 57929e83; size =     34082; name = INSTALL.EXE
+end
+
+//
+// v3.0, 3x1.2M
+//
+game[v3.0-3x1.2m]:
+    name = v3.0, 3x1.2M
+    imports = v3.0
+    anchorfile = BS_AOG.EXE
+    file[]: crc = bee645f5; size =   2864310; remove = BLAKER.EXE
+    file[]: crc = 2ccace5b; size =       746; name = CONFIG.BS6
+    file[]: crc = ef4f8ced; size =     76751; name = SETBLAST.EXE
+end
+
+//
+// v3.0, 3x1.2M, Install 
+//
+installer[v3.0-3x1.2m-install]:
+    name = v3.0, 3x1.2M, Install 
+    installid = v3.0
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = DREAMM3X.BAT
+    anchorfile = BS3_1-6.3
+    file[]: crc = 0dc8afd0; size =    980382; name = BS3_1-6.1
+    file[]: crc = 2c930793; size =    980382; name = BS3_1-6.2
+    file[]: crc = a13e577b; size =    980382; name = BS3_1-6.3
+end
+
+end

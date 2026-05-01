@@ -1,0 +1,114 @@
+//
+// Blake Stone: Planet Strike!
+//
+desc[apog-bstone2]:
+
+name = Blake Stone: Planet Strike!
+icon = apog-bstone2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = BS_FIRE.EXE
+mips = $(MIPS_386DX_33)
+ramkb = 4096
+filter = apogee software, action
+audiohw = sb16
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        audiohw = sb16
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = A:\        ; srcpath = ram              ; condition = is_installer(); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+script[autoinstall]:
+    condition = is_installer()
+    code = [[[$(CRLF)
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("C");
+        wait("int16", 0x00); keyboard_type("Y");
+    ]]]
+end
+
+//
+// v1.0
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = BS_FIRE.EXE
+    file[]: crc = a858dd67; size =      1288; name = AUDIOHED.VSI
+    file[]: crc = 7fb270ec; size =    304415; name = AUDIOT.VSI
+    file[]: crc = 106195a8; size =    144374; name = BS_FIRE.EXE
+    file[]: crc = 6446891f; size =    370212; name = EANIM.VSI
+    file[]: crc = be1cd872; size =     18977; name = IANIM.VSI
+    file[]: crc = d401ba35; size =     22069; name = JAMERR.EXE
+    file[]: crc = e110a68b; size =     11093; name = JM_ERROR.H
+    file[]: crc = e4451ff6; size =       834; name = MAPHEAD.VSI
+    file[]: crc = 784ed359; size =    167158; name = MAPTEMP.VSI
+    file[]: crc = a5cc6351; size =       102; name = PLANET.BAT
+    file[]: crc = ef4f8ced; size =     76751; name = SETBLAST.EXE
+    file[]: crc = d6b5c793; size =      1024; name = VGADICT.VSI
+    file[]: crc = e9677d47; size =    710699; name = VGAGRAPH.VSI
+    file[]: crc = 4447c3ce; size =       747; name = VGAHEAD.VSI
+    file[]: crc = 61ba741f; size =   3195112; name = VSWAP.VSI
+end
+
+//
+// v1.0, 2x1.44M, Install 
+//
+installer[v1.0-2x1.44m-install]:
+    name = v1.0, 2x1.44M, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = INSTALL.EXE
+    anchorfile = PSTRIKE._2
+    file[]: crc = e41d9a47; size =     34606; name = INSTALL.EXE
+    file[]: crc = 770abd6c; size =    847872; name = PSTRIKE._1
+    file[]: crc = bfbd9ee6; size =   1457147; name = PSTRIKE._2
+end
+
+//
+// v1.01
+//
+game[v1.01]:
+    name = v1.01
+    imports = v1.0
+    anchorfile = BS_FIRE.EXE
+    file[]: crc = f8293a7f; size =    144390; name = BS_FIRE.EXE
+end
+
+//
+// v1.01, 2x1.44M, Install 
+//
+installer[v1.01-2x1.44m-install]:
+    name = v1.01, 2x1.44M, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    rootpath = A:\
+    launch = INSTALL.EXE
+    anchorfile = PSTRIKE._2
+    file[]: crc = 69fe3b82; size =     34458; name = INSTALL.EXE
+    file[]: crc = db53cd9e; size =   1110016; name = PSTRIKE._1
+    file[]: crc = 2e7fddd0; size =   1213690; name = PSTRIKE._2
+end

@@ -1,0 +1,286 @@
+//
+// Duke Nukem
+//
+desc[apog-duke1]:
+
+name = Duke Nukem
+icon = apog-duke1.png
+machine = pc
+osenv = dos
+rootpath = C:\
+mips = $(MIPS_286_10)
+ramkb = 640
+filter = apogee software, action
+audiohw = speaker
+
+//
+// episode configuration
+//
+config[episode]:
+    title = Episode Configuration
+    option[episode1]:
+        name = Episode One: “Shrapnel City”
+        condition = file_exists("$$(rootpath)\\DN1.EXE")
+        launch = DN1.EXE
+    end
+    option[episode2]:
+        name = Episode Two: “Mission: Moonbase”
+        condition = file_exists("$$(rootpath)\\DN2.EXE")
+        launch = DN2.EXE
+    end
+    option[episode3]:
+        name = Episode Three: “Trapped in the Future!”
+        condition = file_exists("$$(rootpath)\\DN3.EXE")
+        launch = DN3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        DUKEZIP1.EXE
+        DUKEZIP2.EXE
+        DUKEZIP3.EXE
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0 
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = DN1.EXE
+    file[]: crc = 6e73908c; size =      8064; name = ANIM0.DN1
+    file[]: crc = 6e73908c; size =      8064; name = ANIM0.DN2
+    file[]: crc = 6e73908c; size =      8064; name = ANIM0.DN3
+    file[]: crc = d2b09e16; size =      8064; name = ANIM1.DN1
+    file[]: crc = d2b09e16; size =      8064; name = ANIM1.DN2
+    file[]: crc = d2b09e16; size =      8064; name = ANIM1.DN3
+    file[]: crc = 32961acc; size =      8064; name = ANIM2.DN1
+    file[]: crc = 32961acc; size =      8064; name = ANIM2.DN2
+    file[]: crc = 32961acc; size =      8064; name = ANIM2.DN3
+    file[]: crc = e56d6d5b; size =      8064; name = ANIM3.DN1
+    file[]: crc = e56d6d5b; size =      8064; name = ANIM3.DN2
+    file[]: crc = e56d6d5b; size =      8064; name = ANIM3.DN3
+    file[]: crc = e80dee94; size =      8064; name = ANIM4.DN1
+    file[]: crc = e80dee94; size =      8064; name = ANIM4.DN2
+    file[]: crc = e80dee94; size =      8064; name = ANIM4.DN3
+    file[]: crc = 9aca8ae0; size =      8064; name = ANIM5.DN1
+    file[]: crc = 9aca8ae0; size =      8064; name = ANIM5.DN2
+    file[]: crc = 9aca8ae0; size =      8064; name = ANIM5.DN3
+    file[]: crc = 81ac2877; size =      8064; name = BACK0.DN1
+    file[]: crc = 81ac2877; size =      8064; name = BACK0.DN2
+    file[]: crc = 81ac2877; size =      8064; name = BACK0.DN3
+    file[]: crc = 0bdcf48e; size =      8064; name = BACK1.DN1
+    file[]: crc = 0bdcf48e; size =      8064; name = BACK1.DN2
+    file[]: crc = 0bdcf48e; size =      8064; name = BACK1.DN3
+    file[]: crc = c2051fcf; size =      8064; name = BACK2.DN1
+    file[]: crc = c2051fcf; size =      8064; name = BACK2.DN2
+    file[]: crc = c2051fcf; size =      8064; name = BACK2.DN3
+    file[]: crc = b8e1522b; size =      8064; name = BACK3.DN1
+    file[]: crc = b8e1522b; size =      8064; name = BACK3.DN2
+    file[]: crc = b8e1522b; size =      8064; name = BACK3.DN3
+    file[]: crc = 59de2b71; size =     32000; name = BADGUY.DN1
+    file[]: crc = 59de2b71; size =     32000; name = BADGUY.DN2
+    file[]: crc = 59de2b71; size =     32000; name = BADGUY.DN3
+    file[]: crc = 8938a2d8; size =      7808; name = BORDER.DN1
+    file[]: crc = 8938a2d8; size =      7808; name = BORDER.DN2
+    file[]: crc = 8938a2d8; size =      7808; name = BORDER.DN3
+    file[]: crc = 74ac221e; size =     32000; name = CREDITS.DN1
+    file[]: crc = 74ac221e; size =     32000; name = CREDITS.DN2
+    file[]: crc = 74ac221e; size =     32000; name = CREDITS.DN3
+    file[]: crc = da42d2c6; size =     32000; name = DN.DN1
+    file[]: crc = 4ddeebaf; size =     32000; name = DN.DN2
+    file[]: crc = c7685c7d; size =     32000; name = DN.DN3
+    file[]: crc = d98837da; size =     54656; name = DN1.EXE
+    file[]: crc = b23847ee; size =     54563; name = DN2.EXE
+    file[]: crc = 43f50d6d; size =     54423; name = DN3.EXE
+    file[]: crc = 235dca0b; size =     20803; name = DROP0.DN1
+    file[]: crc = 235dca0b; size =     20803; name = DROP0.DN2
+    file[]: crc = 235dca0b; size =     20803; name = DROP0.DN3
+    file[]: crc = 9bae975b; size =     20803; name = DROP1.DN1
+    file[]: crc = 9bae975b; size =     20803; name = DROP1.DN2
+    file[]: crc = 9bae975b; size =     20803; name = DROP1.DN3
+    file[]: crc = bfb2fd50; size =     20803; name = DROP10.DN3
+    file[]: crc = 041a74fe; size =     20803; name = DROP11.DN1
+    file[]: crc = 041a74fe; size =     20803; name = DROP11.DN2
+    file[]: crc = 8961c985; size =     20803; name = DROP12.DN3
+    file[]: crc = f8d4979e; size =     20803; name = DROP13.DN1
+    file[]: crc = f8d4979e; size =     20803; name = DROP13.DN2
+    file[]: crc = f8d4979e; size =     20803; name = DROP13.DN3
+    file[]: crc = 747ab41a; size =     20803; name = DROP2.DN1
+    file[]: crc = 747ab41a; size =     20803; name = DROP2.DN2
+    file[]: crc = 747ab41a; size =     20803; name = DROP2.DN3
+    file[]: crc = b1dbcb7d; size =     20803; name = DROP3.DN1
+    file[]: crc = b1dbcb7d; size =     20803; name = DROP3.DN2
+    file[]: crc = b1dbcb7d; size =     20803; name = DROP3.DN3
+    file[]: crc = ddb08fc6; size =     20803; name = DROP5.DN1
+    file[]: crc = ddb08fc6; size =     20803; name = DROP5.DN2
+    file[]: crc = ddb08fc6; size =     20803; name = DROP5.DN3
+    file[]: crc = a861f7f0; size =     20803; name = DROP6.DN3
+    file[]: crc = 1c2339ca; size =     20803; name = DROP7.DN1
+    file[]: crc = 906b97bb; size =     20803; name = DROP8.DN2
+    file[]: crc = a4bbbd9a; size =     20803; name = DROP9.DN1
+    file[]: crc = a4bbbd9a; size =     20803; name = DROP9.DN2
+    file[]: crc = a4bbbd9a; size =     20803; name = DROP9.DN3
+    file[]: crc = 4361b43c; size =     32000; name = DUKE.DN1
+    file[]: crc = 4361b43c; size =     32000; name = DUKE.DN2
+    file[]: crc = 4361b43c; size =     32000; name = DUKE.DN3
+    file[]: crc = b5aef346; size =      6158; name = DUKE1-B.DN1
+    file[]: crc = b5aef346; size =      6158; name = DUKE1-B.DN2
+    file[]: crc = b5aef346; size =      6158; name = DUKE1-B.DN3
+    file[]: crc = fe6562ba; size =      5692; name = DUKE1.DN1
+    file[]: crc = fe6562ba; size =      5692; name = DUKE1.DN2
+    file[]: crc = fe6562ba; size =      5692; name = DUKE1.DN3
+    file[]: crc = a9211ba9; size =     32000; name = END.DN1
+    file[]: crc = 0ed9c293; size =     32000; name = END.DN2
+    file[]: crc = 2f078df9; size =     32000; name = END.DN3
+    file[]: crc = 11317baf; size =      2048; name = FONT1.DN1
+    file[]: crc = 11317baf; size =      2048; name = FONT1.DN2
+    file[]: crc = 11317baf; size =      2048; name = FONT1.DN3
+    file[]: crc = 7e6c2856; size =      2048; name = FONT2.DN1
+    file[]: crc = 7e6c2856; size =      2048; name = FONT2.DN2
+    file[]: crc = 7e6c2856; size =      2048; name = FONT2.DN3
+    file[]: crc = 36c1c080; size =      8064; name = MAN0.DN1
+    file[]: crc = 36c1c080; size =      8064; name = MAN0.DN2
+    file[]: crc = 36c1c080; size =      8064; name = MAN0.DN3
+    file[]: crc = 0610e641; size =      8064; name = MAN1.DN1
+    file[]: crc = 0610e641; size =      8064; name = MAN1.DN2
+    file[]: crc = 0610e641; size =      8064; name = MAN1.DN3
+    file[]: crc = 41c5af0f; size =      8064; name = MAN2.DN1
+    file[]: crc = 41c5af0f; size =      8064; name = MAN2.DN2
+    file[]: crc = 41c5af0f; size =      8064; name = MAN2.DN3
+    file[]: crc = fb54717f; size =      8064; name = MAN3.DN1
+    file[]: crc = fb54717f; size =      8064; name = MAN3.DN2
+    file[]: crc = fb54717f; size =      8064; name = MAN3.DN3
+    file[]: crc = 73d30ab9; size =      8064; name = MAN4.DN1
+    file[]: crc = 73d30ab9; size =      8064; name = MAN4.DN2
+    file[]: crc = 73d30ab9; size =      8064; name = MAN4.DN3
+    file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN1
+    file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN2
+    file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN3
+    file[]: crc = 971db682; size =      7168; name = NUMBERS.DN1
+    file[]: crc = 971db682; size =      7168; name = NUMBERS.DN2
+    file[]: crc = 971db682; size =      7168; name = NUMBERS.DN3
+    file[]: crc = 2f563d8e; size =      8064; name = OBJECT0.DN1
+    file[]: crc = 2f563d8e; size =      8064; name = OBJECT0.DN2
+    file[]: crc = 2f563d8e; size =      8064; name = OBJECT0.DN3
+    file[]: crc = b44892eb; size =      8064; name = OBJECT1.DN1
+    file[]: crc = b44892eb; size =      8064; name = OBJECT1.DN2
+    file[]: crc = b44892eb; size =      8064; name = OBJECT1.DN3
+    file[]: crc = 1b394f84; size =      8064; name = OBJECT2.DN1
+    file[]: crc = 1b394f84; size =      8064; name = OBJECT2.DN2
+    file[]: crc = 1b394f84; size =      8064; name = OBJECT2.DN3
+    file[]: crc = 5001c4b3; size =      8064; name = SOLID0.DN1
+    file[]: crc = 5001c4b3; size =      8064; name = SOLID0.DN2
+    file[]: crc = 5001c4b3; size =      8064; name = SOLID0.DN3
+    file[]: crc = 131cd76c; size =      8064; name = SOLID1.DN1
+    file[]: crc = 131cd76c; size =      8064; name = SOLID1.DN2
+    file[]: crc = 131cd76c; size =      8064; name = SOLID1.DN3
+    file[]: crc = d230fc96; size =      8064; name = SOLID2.DN1
+    file[]: crc = d230fc96; size =      8064; name = SOLID2.DN2
+    file[]: crc = d230fc96; size =      8064; name = SOLID2.DN3
+    file[]: crc = 6cdf9f73; size =      8064; name = SOLID3.DN1
+    file[]: crc = 6cdf9f73; size =      8064; name = SOLID3.DN2
+    file[]: crc = 6cdf9f73; size =      8064; name = SOLID3.DN3
+    file[]: crc = 588fdd7d; size =     23040; name = WORLDAL1.DN1
+    file[]: crc = 6751a236; size =     23040; name = WORLDAL1.DN2
+    file[]: crc = 24639576; size =     23040; name = WORLDAL1.DN3
+    file[]: crc = b1c63b2d; size =     23040; name = WORLDAL2.DN1
+    file[]: crc = b1c63b2d; size =     23040; name = WORLDAL2.DN2
+    file[]: crc = b1c63b2d; size =     23040; name = WORLDAL2.DN3
+    file[]: crc = 4b9872ee; size =     23040; name = WORLDAL3.DN1
+    file[]: crc = 72ed7922; size =     23040; name = WORLDAL3.DN2
+    file[]: crc = 612923c4; size =     23040; name = WORLDAL3.DN3
+    file[]: crc = 9d7f40b0; size =     23040; name = WORLDAL4.DN1
+    file[]: crc = 76a76ed3; size =     23040; name = WORLDAL4.DN2
+    file[]: crc = 21961166; size =     23040; name = WORLDAL4.DN3
+    file[]: crc = ce18a14c; size =     23040; name = WORLDAL5.DN1
+    file[]: crc = 707ec9dc; size =     23040; name = WORLDAL5.DN2
+    file[]: crc = abc168c0; size =     23040; name = WORLDAL5.DN3
+    file[]: crc = 8d5578ac; size =     23040; name = WORLDAL6.DN1
+    file[]: crc = b267d7e6; size =     23040; name = WORLDAL6.DN2
+    file[]: crc = 19637777; size =     23040; name = WORLDAL6.DN3
+    file[]: crc = 9e8643bc; size =     23040; name = WORLDAL7.DN1
+    file[]: crc = 45e7b4f5; size =     23040; name = WORLDAL7.DN2
+    file[]: crc = 5c82c266; size =     23040; name = WORLDAL7.DN3
+    file[]: crc = 8fa2b978; size =     23040; name = WORLDAL8.DN1
+    file[]: crc = 89ac8108; size =     23040; name = WORLDAL8.DN2
+    file[]: crc = abbda71d; size =     23040; name = WORLDAL8.DN3
+    file[]: crc = af65b90d; size =     23040; name = WORLDAL9.DN1
+    file[]: crc = d7f7191e; size =     23040; name = WORLDAL9.DN2
+    file[]: crc = a2edd66d; size =     23040; name = WORLDAL9.DN3
+    file[]: crc = 331cc0af; size =     23040; name = WORLDALA.DN1
+    file[]: crc = 3dbf2155; size =     23040; name = WORLDALA.DN2
+    file[]: crc = b79e3f00; size =     23040; name = WORLDALA.DN3
+    file[]: crc = 99d5ec33; size =     23040; name = WORLDALB.DN1
+    file[]: crc = e80671e5; size =     23040; name = WORLDALB.DN2
+    file[]: crc = b9f616f2; size =     23040; name = WORLDALB.DN3
+    file[]: crc = de8f7d71; size =     23040; name = WORLDALC.DN1
+    file[]: crc = de8f7d71; size =     23040; name = WORLDALC.DN2
+    file[]: crc = de8f7d71; size =     23040; name = WORLDALC.DN3
+end
+
+//
+// v1.0, 3x360k, Install 
+//
+installer[v1.0-3x360k-install]:
+    name = v1.0, 3x360k, Install
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = DUKEZIP3.EXE
+    file[]: crc = 2b7566e1; size =    254923; name = DUKEZIP1.EXE
+    file[]: crc = 3b9c9e2d; size =    261279; name = DUKEZIP2.EXE
+    file[]: crc = 957c12ca; size =    258215; name = DUKEZIP3.EXE
+end
+
+//
+// v2.0
+//
+game[v2.0]:
+    name = v2.0
+    imports = v1.0
+    anchorfile = DN1.EXE
+    file[]: crc = a4940f39; size =     32000; name = DN.DN1
+    file[]: crc = 33083650; size =     32000; name = DN.DN2
+    file[]: crc = b9be8182; size =     32000; name = DN.DN3
+    file[]: crc = c81fdf89; size =     54688; name = DN1.EXE
+    file[]: crc = 66ba1884; size =     54595; name = DN2.EXE
+    file[]: crc = 2ee53566; size =     54439; name = DN3.EXE
+end
+
+//
+// v2.0, 1x720k, Install 
+//
+installer[v2.0-1x720k-install]:
+    name = v2.0, 1x720k, Install
+    installid = v2.0
+    mips = $(MIPS_MAX)
+    launch = DUKE123.EXE
+    anchorfile = DUKE123.EXE
+    file[]: crc = 8d9e5cfe; size =    673490; name = DUKE123.EXE
+end
+
+end

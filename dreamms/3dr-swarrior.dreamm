@@ -1,0 +1,526 @@
+//
+// Shadow Warrior
+//
+desc[3dr-swarrior]:
+
+name = Shadow Warrior
+icon = 3dr-swarrior.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\SW.EXE
+mips = $(MIPS_MAX)
+ramkb = 16384
+filter = 3drealms, fps
+MUSIC_CONFIG = MusicDevice = 13
+
+//
+// controls configuration
+//
+config[controls]:
+    title = Controls Configuration
+    option[classic]:     
+        name = Classic (Default); priority = 1
+        KEYBINDS = [[[$(CRLF)
+            Move_Forward = "Up" "Kpad8"
+            Move_Backward = "Down" "Kpad2"
+            Turn_Left = "Left" "Kpad4"
+            Turn_Right = "Right" "KPad6"
+            Strafe = "LAlt" "RAlt"
+            Fire = "LCtrl" "RCtrl"
+            Open = "Space" ""
+            Run = "LShift" "RShift"
+            AutoRun = "CapLck" ""
+            Jump = "A" "/"
+            Crouch = "Z" ""
+            Look_Up = "PgUp" "Kpad9"
+            Look_Down = "PgDn" "Kpad3"
+            Look_Left = "Insert" "Kpad0"
+            Look_Right = "Delete" "Kpad."
+            Strafe_Left = "," ""
+            Strafe_Right = "." ""
+            Aim_Up = "Home" "KPad7"
+            Aim_Down = "End" "Kpad1"
+        ]]]
+        MOUSEBINDS = [[[$(CRLF)
+            MouseAiming = 0
+            MouseButton0 = "Fire"
+            MouseButtonClicked0 = ""
+            MouseButton1 = "Strafe"
+            MouseButtonClicked1 = "Open"
+            MouseButton2 = "Move_Forward"
+            MouseButtonClicked2 = ""
+        ]]]
+    end
+    option[modern]:     
+        name = Modern (WASD + Mouse)
+        KEYBINDS = [[[$(CRLF)
+            Move_Forward = "W" "Kpad8"
+            Move_Backward = "S" "Kpad2"
+            Turn_Left = "" "Kpad4"
+            Turn_Right = "" "KPad6"
+            Strafe = "LAlt" "RAlt"
+            Fire = "" "RCtrl"
+            Open = "" ""
+            Run = "LShift" "RShift"
+            AutoRun = "CapLck" "\"
+            Jump = "Space" "/"
+            Crouch = "LCtrl" ""
+            Look_Up = "PgUp" "Kpad9"
+            Look_Down = "PgDn" "Kpad3"
+            Look_Left = "Insert" "Kpad0"
+            Look_Right = "Delete" "Kpad."
+            Strafe_Left = "A" ""
+            Strafe_Right = "D" ""
+            Aim_Up = "Home" "KPad7"
+            Aim_Down = "End" "Kpad1"
+        ]]]
+        MOUSEBINDS = [[[$(CRLF)
+            MouseAiming = 0
+            MouseButton0 = "Fire"
+            MouseButtonClicked0 = ""
+            MouseButton1 = "Open"
+            MouseButtonClicked1 = "Caltrops"
+            MouseButton2 = "Center_View"
+            MouseButtonClicked2 = ""
+            MouseAnalogScale1 = -65536
+        ]]]
+    end
+    option[moderninv]:     
+        name = Modern (WASD + Inverted Mouse)
+        KEYBINDS = [[[$(CRLF)
+            Move_Forward = "W" "Kpad8"
+            Move_Backward = "S" "Kpad2"
+            Turn_Left = "" "Kpad4"
+            Turn_Right = "" "KPad6"
+            Strafe = "LAlt" "RAlt"
+            Fire = "" "RCtrl"
+            Open = "" ""
+            Run = "LShift" "RShift"
+            AutoRun = "CapLck" "\"
+            Jump = "Space" "/"
+            Crouch = "LCtrl" ""
+            Look_Up = "PgUp" "Kpad9"
+            Look_Down = "PgDn" "Kpad3"
+            Look_Left = "Insert" "Kpad0"
+            Look_Right = "Delete" "Kpad."
+            Strafe_Left = "A" ""
+            Strafe_Right = "D" ""
+            Aim_Up = "Home" "KPad7"
+            Aim_Down = "End" "Kpad1"
+        ]]]
+        MOUSEBINDS = [[[$(CRLF)
+            MouseAiming = 0
+            MouseButton0 = "Fire"
+            MouseButtonClicked0 = ""
+            MouseButton1 = "Open"
+            MouseButtonClicked1 = "Caltrops"
+            MouseButton2 = "Center_View"
+            MouseButtonClicked2 = ""
+            MouseAnalogScale1 = 65536
+        ]]]
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    condition = is_demo()
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = sb16+adlib
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicDevice = 3
+        ]]]
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicDevice = 1
+        ]]]
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME); priority = 1
+        audiohw = sb16+gmidi
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicDevice = 4
+        ]]]
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[vga]:     
+        name = $(VGA_NAME); priority = 1
+        videohw = vga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 2
+            ScreenWidth = 320
+            ScreenHeight = 200
+        ]]]
+    end
+    option[640x400]:     
+        name = 640x400
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 640
+            ScreenHeight = 400
+        ]]]
+    end
+    option[640x480]:     
+        name = 640x480
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 640
+            ScreenHeight = 480
+        ]]]
+    end
+    option[800x600]:     
+        name = 800x600
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 800
+            ScreenHeight = 600
+        ]]]
+    end
+    option[1024x768]:     
+        name = 1024x768
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 1024
+            ScreenHeight = 768
+        ]]]
+    end
+    option[1280x1024]:     
+        name = 1280x1024
+        videohw = svga
+        VIDEO_CONFIG = [[[$(CRLF)
+            ScreenMode = 1
+            ScreenWidth = 1280
+            ScreenHeight = 1024
+        ]]]
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\SW.CFG
+    contents = [[[$(CRLF)
+        [Setup]
+        ;Setup File for Shadow Warrior
+        $(SETUP_VERSION)
+        ; 
+        ;
+        [Screen Setup]
+        ; 
+        ; 
+        ;ScreenMode
+        ; - Chained - 0
+        ; - Vesa 2.0 - 1
+        ; - Screen Buffered - 2
+        ; - Tseng optimized - 3
+        ; - Paradise optimized - 4
+        ; - S3 optimized - 5
+        ; - RedBlue Stereo - 7
+        ; - Crystal Eyes - 6
+        ; 
+        ;ScreenWidth passed to engine
+        ; 
+        ;ScreenHeight passed to engine
+        ; 
+        ; 
+        $(VIDEO_CONFIG)
+        ; 
+        ; 
+        [Sound Setup]
+        ; 
+        ;MusicDevice
+        ; - No device           - 13
+        ; - PC-Speaker (N/A)    - 12
+        ; - Tandy Sound System  - 11
+        ; - Disney Sound System - 10
+        ; - Gravis Ultra Sound  - 9
+        ; - Ensoniq Soundscape  - 8
+        ; - WaveBlaster         - 7
+        ; - SB AWE 32           - 6
+        ; - Sound Canvas        - 5
+        ; - General Midi        - 4
+        ; - Adlib               - 3
+        ; - Sound Man 16        - 2
+        ; - Pro Audio Spectrum  - 1
+        ; - Sound Blaster       - 0
+        ;
+        ;
+        ;FxDevice
+        ; - No device           - 13
+        ; - PC-Speaker (N/A)    - 12
+        ; - Tandy Sound System  - 11
+        ; - Disney Sound System - 10
+        ; - Gravis Ultra Sound  - 9
+        ; - Ensoniq Soundscape  - 8
+        ; - SB AWE 32           - 6
+        ; - Sound Man 16        - 2
+        ; - Pro Audio Spectrum  - 1
+        ; - Sound Blaster       - 0
+        ;
+        ;
+        FXDevice = 0
+        $(MUSIC_CONFIG)
+        FXVolume = 192
+        MusicVolume = 255
+        NumVoices = 32
+        NumChannels = 2
+        NumBits = 16
+        MixRate = 22000
+        MidiPort = 0x330
+        BlasterAddress = 0x220
+        BlasterType = 6
+        BlasterInterrupt = 7
+        BlasterDma8 = 1
+        BlasterDma16 = 5
+        BlasterEmu = 0x620
+        ReverseStereo = 0
+        ; 
+        ; 
+        [KeyDefinitions]
+        ; 
+        ; 
+        ; Set through DREAMM
+        $(KEYBINDS)
+        Weapon_1 = "1" ""
+        Weapon_2 = "2" ""
+        Weapon_3 = "3" ""
+        Weapon_4 = "4" ""
+        Weapon_5 = "5" ""
+        Weapon_6 = "6" ""
+        Weapon_7 = "7" ""
+        Weapon_8 = "8" ""
+        Weapon_9 = "9" ""
+        Weapon_10 = "0" ""
+        Inventory = "Enter" "KpdEnt"
+        Inventory_Left = "[" ""
+        Inventory_Right = "]" ""
+        Med_Kit = "M" ""
+        Smoke_Bomb = "S" ""
+        Night_Vision = "N" ""
+        Gas_Bomb = "G" ""
+        Flash_Bomb = "F" ""
+        Caltrops = "C" ""
+        TurnAround = "BakSpc" ""
+        SendMessage = "T" ""
+        Map = "Tab" ""
+        Shrink_Screen = "-" "Kpad-"
+        Enlarge_Screen = "=" "Kpad+"
+        Center_View = "KPad5" ""
+        Holster_Weapon = "ScrLck" ""
+        Map_Follow_Mode = "F" ""
+        See_Co_Op_View = "K" ""
+        Mouse_Aiming = "U" ""
+        Toggle_Crosshair = "I" ""
+        Next_Weapon = "'" ""
+        Previous_Weapon = ";" ""
+        ; 
+        ; 
+        [Controls]
+        ; 
+        ; 
+        ;Controls
+        ; 
+        ;ControllerType
+        ; - Keyboard                  - 0
+        ; - Keyboard and Mouse        - 1
+        ; - Keyboard and Joystick     - 2
+        ; - Keyboard and Gamepad      - 4
+        ; - Keyboard and External     - 3
+        ; - Keyboard and FlightStick  - 5
+        ; - Keyboard and ThrustMaster - 6
+        ; 
+        ; 
+        ControllerType = 1
+        JoystickPort = 0
+        MouseSensitivity = 49152
+        ExternalFilename = "EXTERNAL.EXE"
+        EnableRudder = 0
+        ; Set through DREAMM
+        $(MOUSEBINDS)
+        JoystickButton0 = "Fire"
+        JoystickButtonClicked0 = ""
+        JoystickButton1 = "Strafe"
+        JoystickButtonClicked1 = "Inventory"
+        JoystickButton2 = "Run"
+        JoystickButtonClicked2 = "Jump"
+        JoystickButton3 = "Open"
+        JoystickButtonClicked3 = "Crouch"
+        JoystickButton4 = "Aim_Down"
+        JoystickButtonClicked4 = ""
+        JoystickButton5 = "Look_Right"
+        JoystickButtonClicked5 = ""
+        JoystickButton6 = "Aim_Up"
+        JoystickButtonClicked6 = ""
+        JoystickButton7 = "Look_Left"
+        JoystickButtonClicked7 = ""
+        MouseAnalogAxes0 = "analog_turning"
+        MouseDigitalAxes0_0 = ""
+        MouseDigitalAxes0_1 = ""
+        MouseAnalogScale0 = 65536
+        MouseAnalogAxes1 = "analog_moving"
+        MouseDigitalAxes1_0 = ""
+        MouseDigitalAxes1_1 = ""
+        JoystickAnalogAxes0 = "analog_turning"
+        JoystickDigitalAxes0_0 = ""
+        JoystickDigitalAxes0_1 = ""
+        JoystickAnalogScale0 = 65536
+        JoystickAnalogAxes1 = "analog_moving"
+        JoystickDigitalAxes1_0 = ""
+        JoystickDigitalAxes1_1 = ""
+        JoystickAnalogScale1 = 65536
+        JoystickAnalogAxes2 = "analog_strafing"
+        JoystickDigitalAxes2_0 = ""
+        JoystickDigitalAxes2_1 = ""
+        JoystickAnalogScale2 = 65536
+        JoystickAnalogAxes3 = ""
+        JoystickDigitalAxes3_0 = "Run"
+        JoystickDigitalAxes3_1 = ""
+        JoystickAnalogScale3 = 65536
+        GamePadDigitalAxes0_0 = "Turn_Left"
+        GamePadDigitalAxes0_1 = "Turn_Right"
+        GamePadDigitalAxes1_0 = "Move_Forward"
+        GamePadDigitalAxes1_1 = "Move_Backward"
+        ; 
+        ; 
+        [Comm Setup]
+        ; 
+        ; 
+        ComPort = 2
+        IrqNumber = ~
+        UartAddress = ~
+        PortSpeed = 19200
+        ToneDial = 1
+        SocketNumber = ~
+        NumberPlayers = 2
+        ModemName = ""
+        InitString = "ATZ"
+        HangupString = "ATH0=0"
+        DialoutString = ""
+        PlayerName = "KATO"
+        RTSName = "SW.RTS"
+        RTSPath = ".\"
+        UserPath = ".\"
+        PhoneNumber = ""
+        ConnectType = 0
+        CommbatMacro#0 = "Burn baby burn..."
+        CommbatMacro#1 = "You make another stupid move."
+        CommbatMacro#2 = "Blocking with your head again?"
+        CommbatMacro#3 = "You not fight well with hands!"
+        CommbatMacro#4 = "You so stupid!"
+        CommbatMacro#5 = "Quit jerking off. Come fight me!"
+        CommbatMacro#6 = "What the matter you scaredy cat?"
+        CommbatMacro#7 = "Did I break your concentration?"
+        CommbatMacro#8 = "Hope you were paying attention."
+        CommbatMacro#9 = "ITTAIIIUUU!!!"
+        PhoneName#0 = ""
+        PhoneNumber#0 = ""
+        PhoneName#1 = ""
+        PhoneNumber#1 = ""
+        PhoneName#2 = ""
+        PhoneNumber#2 = ""
+        PhoneName#3 = ""
+        PhoneNumber#3 = ""
+        PhoneName#4 = ""
+        PhoneNumber#4 = ""
+        PhoneName#5 = ""
+        PhoneNumber#5 = ""
+        PhoneName#6 = ""
+        PhoneNumber#6 = ""
+        PhoneName#7 = ""
+        PhoneNumber#7 = ""
+        PhoneName#8 = ""
+        PhoneNumber#8 = ""
+        PhoneName#9 = ""
+        PhoneNumber#9 = ""
+        PhoneName#10 = ""
+        PhoneNumber#10 = ""
+        PhoneName#11 = ""
+        PhoneNumber#11 = ""
+        PhoneName#12 = ""
+        PhoneNumber#12 = ""
+        PhoneName#13 = ""
+        PhoneNumber#13 = ""
+        PhoneName#14 = ""
+        PhoneNumber#14 = ""
+        PhoneName#15 = ""
+        PhoneNumber#15 = ""
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; condition = is_game()
+
+fragment[v1.x-base]:
+    file[]: crc = 80deedcc; size =     76554; name = COMMIT.EXE
+    file[]: crc = 4374403f; size =      4336; name = MODEM.PCK
+    file[]: crc = f8dbc57d; size =     27153; name = SETUP.EXE
+    file[]: crc = 436f0241; size =      9632; name = SW.PCX
+    file[]: crc = 85d116fd; size =    267626; name = SW.RTS
+    file[]: crc = fb3c540d; size =      6975; name = ULTRAMID.INI
+end
+
+//
+// v1.1, Demo
+//
+demo[v1.1-demo]:
+    name = v1.1, Demo
+    SETUP_VERSION = SetupVersion = "1.1"
+    imports = v1.x-base
+    anchorfile = SW.EXE
+    file[]: crc = 7c7244bf; size =     41045; name = DEMO1.DMO
+    file[]: crc = 8303ef88; size =     41045; name = DEMO2.DMO
+    file[]: crc = fc47906a; size =        22; name = DEMOS.RUN
+    file[]: crc = d45e9d04; size =    762458; name = SETMAIN.EXE
+    file[]: crc = b904ca0e; size =   1967420; name = SW.EXE
+    file[]: crc = f21a6b35; size =  25833456; name = SW.GRP
+    file[]: crc = e1886329; size =     82584; name = SWHELP.EXE
+end
+
+//
+// v1.2
+//
+game[v1.2]:
+    name = v1.2
+    SETUP_VERSION = SetupVersion = "1.2"
+    imports = v1.x-base
+    anchorfile = SW.EXE
+    file[]: crc = 076a576f; size =      2618; name = CREDITS.TXT
+    file[]: crc = bfa220f0; size =    762618; name = SETMAIN.EXE
+    file[]: crc = 01cad068; size =   2323389; name = SW.EXE
+    file[]: crc = 7545319f; size =  47536148; name = SW.GRP
+    file[]: crc = e642446e; size =     79378; name = SWHELP.EXE
+    file[]:                                   name = CD\CDDA.SOU; cdda = 180/70/187/227/200/160/214/220/230/241/256/305/152
+end
+
+//
+// v1.2, Special Edition
+//
+game[v1.2-se]:
+    name = v1.2, Special Edition
+    SETUP_VERSION = SetupVersion = "1.2"
+    imports = v1.2
+    anchorfile = SW.EXE
+    file[]: crc = c942d316; size =   2323853; name = SW.EXE
+    file[]: crc = 1a8776d2; size =  47537951; name = SW.GRP
+end
+
+end

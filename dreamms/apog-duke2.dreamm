@@ -1,0 +1,76 @@
+//
+// Duke Nukem II
+//
+desc[apog-duke2]:
+
+name = Duke Nukem II
+icon = apog-duke2.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = NUKEM2.EXE
+mips = $(MIPS_386DX_33)
+ramkb = 4096
+filter = apogee software, action
+audiohw = sb16
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        COPY DN2_ALL.1+DN2_ALL.2 DN2_ALL.EXE
+        DN2_ALL.EXE
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath); writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
+
+//
+// v1.0 
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = NUKEM2.EXE
+    file[]: crc = bb1fa181; size =     10795; name = DN2-HELP.EXE
+    file[]: crc = c32ab4af; size =      9499; name = DN2-HINT.EXE
+    file[]: crc = 32199d67; size =   5496675; name = NUKEM2.CMP
+    file[]: crc = 6c9503ef; size =     59552; name = NUKEM2.EXE
+    file[]: crc = 8d79d883; size =     98960; name = NUKEM2.F1
+    file[]: crc = 903fc92f; size =     38622; name = NUKEM2.F2
+    file[]: crc = 5cbc97a6; size =     52427; name = NUKEM2.F3
+    file[]: crc = d5b8b979; size =    240848; name = NUKEM2.F4
+    file[]: crc = 96bb414e; size =     33911; name = NUKEM2.F5
+end
+
+//
+// v1.0, 2x1.44M, Install 
+//
+installer[v1.0-2x1.44m-install]:
+    name = v1.0, 2x1.44M, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = DN2_ALL.2
+    file[]: crc = f66b42dd; size =   1337856; name = DN2_ALL.1
+    file[]: crc = a999a613; size =    146461; name = DN2_ALL.2
+end
+
+end
