@@ -12,22 +12,27 @@ launch = NUKEM2.EXE
 mips = $(MIPS_386DX_33)
 ramkb = 4096
 filter = apogee software, action
-audiohw = sb16
+videohw = vga
 
 //
-// graphics configuration
+// sound configuration
 //
-config[graphics]:
-    title = Graphics Configuration
-    option[ega]:
-        name = $(EGA_NAME); priority = 1
-        videohw = ega
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
     end
-    option[vga]:
-        name = $(VGA_NAME)
-        videohw = vga
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        audiohw = adlib; priority = 1
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
     end
 end
+
 
 dynamicfile[]:
     path = $(rootpath)\DREAMM.BAT
@@ -49,8 +54,8 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 game[v1.0]:
     name = v1.0
     anchorfile = NUKEM2.EXE
-    file[]: crc = bb1fa181; size =     10795; name = DN2-HELP.EXE
-    file[]: crc = c32ab4af; size =      9499; name = DN2-HINT.EXE
+    file[]: crc = bb1fa181; size =     10795; name = DN2-HELP.EXE; optional = true
+    file[]: crc = c32ab4af; size =      9499; name = DN2-HINT.EXE; optional = true
     file[]: crc = 32199d67; size =   5496675; name = NUKEM2.CMP
     file[]: crc = 6c9503ef; size =     59552; name = NUKEM2.EXE
     file[]: crc = 8d79d883; size =     98960; name = NUKEM2.F1
