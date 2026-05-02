@@ -65,7 +65,6 @@ game[v1.0]:
     file[]: crc = e110a68b; size =     11093; name = JM_ERROR.H
     file[]: crc = e4451ff6; size =       834; name = MAPHEAD.VSI
     file[]: crc = 784ed359; size =    167158; name = MAPTEMP.VSI
-    file[]: crc = a5cc6351; size =       102; name = PLANET.BAT
     file[]: crc = ef4f8ced; size =     76751; name = SETBLAST.EXE
     file[]: crc = d6b5c793; size =      1024; name = VGADICT.VSI
     file[]: crc = e9677d47; size =    710699; name = VGAGRAPH.VSI

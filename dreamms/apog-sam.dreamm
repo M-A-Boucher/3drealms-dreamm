@@ -113,4 +113,16 @@ installer[v1.0-1x720k-install]:
     file[]: crc = 1f60f75f; size =    564944; name = SAM123.EXE
 end
 
+//
+// GOG 
+//
+game[gog]:
+    name = GOG
+    imports = v1.0
+    anchorfile = SAM1.EXE
+    file[]: crc = fef2d31f; size =     63630; name = SAM1.EXE
+    file[]: crc = ad7b3621; size =     63950; name = SAM2.EXE
+    file[]: crc = b1450f87; size =     63904; name = SAM3.EXE
+end
+
 end
