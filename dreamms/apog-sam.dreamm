@@ -114,7 +114,7 @@ installer[v1.0-1x720k-install]:
 end
 
 //
-// 3D Realms Anthology 
+// 3D Realms Anthology (v1.0)
 //
 game[v1.0-anthology]:
     name = 3D Realms Anthology (v1.0)
