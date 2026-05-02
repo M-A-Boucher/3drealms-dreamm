@@ -1,0 +1,432 @@
+//
+// Rise of the Triad - Dark War
+//
+desc[apog-rott]:
+
+name = Rise of the Triad - Dark War
+icon = apog-rott.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = ROTT.EXE
+mips = $(MIPS_MAX)
+ramkb = 8192
+filter = apogee software, action
+audiohw = $(AUDIOHW)+$(MUSICHW)
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+    option[svga]:
+        name = $(SVGA_NAME)
+        videohw = svga
+    end
+end
+
+//
+// music configuration
+//
+config[music]:
+    title = Music Configuration
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        MUSICHW = adlib
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicMode          10
+        ]]]
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        MUSICHW = sb16
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicMode          2
+        ]]]
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        MUSICHW = gmidi
+        MUSIC_CONFIG = [[[$(CRLF)
+            MusicMode          8
+        ]]]
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        AUDIOHW = speaker
+        SOUND_CONFIG = [[[$(CRLF)
+            FXMode             10
+        ]]]
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        AUDIOHW = adlib
+        SOUND_CONFIG = [[[$(CRLF)
+            FXMode             7
+        ]]]
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        AUDIOHW = sb16
+        SOUND_CONFIG = [[[$(CRLF)
+            FXMode             2
+        ]]]
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\CONFIGT.ROT
+    contents = [[[$(CRLF)
+        ;Rise of the Triad Configuration File
+        ;                  (c) 1995
+
+        Version            12
+
+        ;
+        ; 1 - Mouse Enabled
+        ; 0 - Mouse Disabled
+        MouseEnabled       1
+
+        ;
+        ; 1 - Joystick Enabled
+        ; 0 - Joystick Disabled
+        JoystickEnabled    0
+
+        ;
+        ; 1 - Joypad Enabled
+        ; 0 - Joypad Disabled
+        JoypadEnabled      0
+
+        ;
+        ; 0 - Use Joystick Port 1
+        ; 1 - Use Joystick Port 2
+        JoystickPort       0
+
+        ;
+        ; Size of View port.
+        ; (smallest) 0 - 10 (largest)
+        ViewSize           7
+
+        ;
+        ; Sensitivity of Mouse
+        ; (lowest) 0 - 11 (highest)
+        MouseAdjustment    5
+
+        ;
+        ; Threshold of Mouse and Joystick
+        ; (smallest) 1 - 15 (largest)
+        Threshold          1
+
+        ;
+        ; 1 - Auto Detail on
+        ; 0 - Auto Detail off
+        AutoDetail         1
+
+        ;
+        ; 1 - Light Diminishing on
+        ; 0 - Light Diminishing off
+        LightDim           0
+
+        ;
+        ; 1 - Bobbing on
+        ; 0 - Bobbing off
+        BobbingOn          1
+
+        ;
+        ; (slowest) 50 - 5 (fastest)
+        DoubleClickSpeed   20
+
+        ;
+        ; Menu Flip Speed
+        ; (slowest) 100 - 5 (fastest)
+        MenuFlipSpeed      15
+
+        ;
+        ; 0 - Detail Level Low
+        ; 1 - Detail Level Medium
+        ; 2 - Detail Level High
+        DetailLevel        2
+
+        ;
+        ; 1 - Floor and Ceiling on
+        ; 0 - Floor and Ceiling off
+        FloorCeiling       1
+
+        ;
+        ; 1 - Messages on
+        ; 0 - Messages off
+        Messages           1
+
+        ;
+        ; 0 - Gamma Correction level 1
+        ; 1 - Gamma Correction level 2
+        ; 2 - Gamma Correction level 3
+        ; 3 - Gamma Correction level 4
+        ; 4 - Gamma Correction level 5
+        GammaIndex         0
+
+        ;
+        ; Minutes before screen blanking
+        BlankTime          2
+
+        ;
+        ; Scan codes for keyboard buttons
+        Fire               29
+        Strafe             56
+        Run                54
+        Use                57
+        LookUp             73
+        LookDn             81
+        Swap               28
+        Drop               83
+        TargetUp           71
+        TargetDn           79
+        SelPistol          2
+        SelDualPistol      3
+        SelMP40            4
+        SelMissile         5
+        AutoRun            58
+        LiveRemRid         88
+        StrafeLeft         51
+        StrafeRight        52
+        VolteFace          14
+        Aim                30
+        Forward            72
+        Right              77
+        Backward           80
+        Left               75
+        Map                15
+        SendMessage        20
+        DirectMessage      44
+
+        ;
+        ; Mouse buttons
+        MouseButton0       0
+        MouseButton1       1
+        MouseButton2       20
+        DblClickB0         -1
+        DblClickB1         3
+        DblClickB2         -1
+
+        ;
+        ; Joystick buttons
+        JoyButton0         0
+        JoyButton1         1
+        JoyButton2         2
+        JoyButton3         3
+        DblClickJB0        -1
+        DblClickJB1        -1
+        DblClickJB2        -1
+        DblClickJB3        -1
+
+        ;
+        ; Joystick calibration coordinates
+        JoyMaxX            0
+        JoyMaxY            0
+        JoyMinX            0
+        JoyMinY            0
+
+        ;
+        ; Easy             -   0
+        ; Medium           -   1
+        ; Hard             -   2
+        ; Crezzy           -   3
+        DefaultDifficulty      2
+
+        ;
+        ; Taradino Cassatt   -   0
+        ; Thi Barrett        -   1
+        ; Doug Wendt         -   2
+        ; Lorelei Ni         -   3
+        ; Ian Paul Freeley   -   4
+        DefaultPlayerCharacter   0
+
+        ;
+        ; Gray             -   0
+        ; Brown            -   1
+        ; Black            -   2
+        ; Tan              -   3
+        ; Red              -   4
+        ; Olive            -   5
+        ; Blue             -   6
+        ; White            -   7
+        ; Green            -   8
+        ; Purple           -   9
+        ; Orange           -   10
+        DefaultPlayerColor     0
+
+        ;
+        SecretPassword         7d7e4a2d3b6a0319554654231c
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\SOUND.ROT
+    contents = [[[$(CRLF)
+        ;Rise of the Triad Sound File
+        ;                  (c) 1995
+
+        Version            12
+
+        ;
+        ; Music Modes
+        ; 0  -  Off
+        ; 1  -  UltraSound
+        ; 2  -  Sound Blaster
+        ; 3  -  Sound Man 16
+        ; 4  -  Pro Audio Spectrum
+        ; 5  -  Awe32
+        ; 6  -  SoundScape
+        ; 7  -  Wave Blaster
+        ; 8  -  General Midi
+        ; 9  -  Sound Canvas
+        ; 10 -  Adlib
+        $(MUSIC_CONFIG)
+
+        ;
+        ; FX Modes
+        ; 0  -  Off
+        ; 1  -  UltraSound
+        ; 2  -  Sound Blaster
+        ; 3  -  Sound Man 16
+        ; 4  -  Pro Audio Spectrum
+        ; 5  -  Awe32
+        ; 6  -  SoundScape
+        ; 7  -  Adlib
+        ; 8  -  Disney Sound Source
+        ; 9  -  Tandy Sound Source
+        ; 10 -  PC Speaker
+        $(SOUND_CONFIG)
+
+        ;
+        ; Music Volume
+        ; (low) 0 - 255 (high)
+        MusicVolume      196
+
+        ;
+        ; FX Volume
+        ; (low) 0 - 255 (high)
+        FXVolume         196
+
+        ;
+        ; Number of Voices
+        ; 1 - 8
+        NumVoices          8
+
+        ;
+        ; Stereo or Mono
+        ; 1 - Mono
+        ; 2 - Stereo
+        NumChannels        2
+
+        ;
+        ; Resolution
+        ; 8 bit
+        ; 16 bit
+        NumBits            16
+
+        ;
+        ; Midi Addresses
+        ; $300
+        ; $310
+        ; $320
+        ; $330
+        ; $340
+        ; $350
+        ; $360
+        ; $370
+        ; $380
+        MidiAddress        $330
+
+        ;
+        ; Sound Blaster Settings
+        SBType             6
+        SBPort             $220
+        SBIrq              7
+        SBDma8             1
+        SBDma16            5
+        SBMidi             $ffffffff
+        SBEmu              $ffffffff
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        INSTALL.EXE
+        ROTT12R.EXE
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+script[autoinstall]:
+    condition = is_installer()
+    code = [[[$(CRLF)
+        input_lockout(true);
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("C");
+        input_lockout(false);
+    ]]]
+end
+
+//
+// v1.2a
+//
+game[v1.2a]:
+    name = v1.2a
+    anchorfile = ROTT.EXE
+    file[]: crc = 7dd14fde; size =    162646; name = DARKWAR.RTC
+    file[]: crc = 7cf7e8d7; size =    408100; name = DARKWAR.RTL
+    file[]: crc = d391fd5a; size =  14610173; name = DARKWAR.WAD
+    file[]: crc = 06dd0686; size =     12548; name = DEMO1_3.DMO
+    file[]: crc = 1c2f9b46; size =     17468; name = DEMO2_3.DMO
+    file[]: crc = 1f924274; size =     54258; name = HUNTBGIN.RTC
+    file[]: crc = 45095e4c; size =    103316; name = HUNTBGIN.RTL
+    file[]: crc = ee6bfeb0; size =      2179; name = MODEM.PCK   ; optional = true
+    file[]: crc = ef6f48b7; size =    110484; name = REMOTE1.RTS
+    file[]: crc = 8137b73c; size =   1127073; name = ROTT.EXE
+    file[]: crc = 467f078d; size =     64307; name = ROTTHELP.EXE; optional = true
+    file[]: crc = d300cc89; size =     16562; name = ROTTIPX.EXE ; optional = true
+    file[]: crc = cbbd8839; size =     21809; name = ROTTSER.EXE ; optional = true
+    file[]: crc = 7de0dbbb; size =     32328; name = SETUP.EXE   ; optional = true
+    file[]: crc = 24487a35; size =      5756; name = SNDSETUP.EXE; optional = true
+end
+
+//
+// v1.2a, 5x1.44M, Install 
+//
+installer[v1.2a-5x1.44m-install]:
+    name = v1.2a, 5x1.44M, Install 
+    installid = v1.2a
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = ROTT12R._5
+    file[]: crc = ee180a27; size =     39499; name = INSTALL.EXE
+    file[]: crc = 90d48a6a; size =   1358848; name = ROTT12R._1
+    file[]: crc = d9bf8ce5; size =   1457152; name = ROTT12R._2
+    file[]: crc = 5bad56cc; size =   1457152; name = ROTT12R._3
+    file[]: crc = 80248d7c; size =   1457152; name = ROTT12R._4
+    file[]: crc = c5105c0f; size =   1456576; name = ROTT12R._5
+
+end
+
+end
