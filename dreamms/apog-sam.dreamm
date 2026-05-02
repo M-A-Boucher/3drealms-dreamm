@@ -1,0 +1,116 @@
+//
+// Secret Agent
+//
+desc[apog-sam]:
+
+name = Secret Agent
+icon = apog-sam.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(EXENAME)
+mips = $(MIPS_386DX_33)
+nothrottle = 5
+ramkb = 4096
+filter = apogee software, action
+audiohw = adlib
+videohw = ega
+
+//
+// mission configuration
+//
+config[mission]:
+    title = mission Configuration
+    option[mission1]:
+        name = Mission One: “The Hunt for Red Rock Rover”
+        condition = file_exists("$$(rootpath)\\SAM1.EXE")
+        EXENAME = SAM1.EXE
+    end
+    option[mission2]:
+        name = Mission Two: “Kill Again Island”
+        condition = file_exists("$$(rootpath)\\SAM2.EXE")
+        EXENAME = SAM2.EXE
+    end
+    option[mission3]:
+        name = Mission Three: “Dr. No Body”
+        condition = file_exists("$$(rootpath)\\SAM3.EXE")
+        EXENAME = SAM3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0 
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = SAM1.EXE
+    file[]: crc = abf56ada; size =     16304; name = SAM1.APO
+    file[]: crc = 6c1713ee; size =     17420; name = SAM1.CRD
+    file[]: crc = b792735a; size =     11091; name = SAM1.END
+    file[]: crc = 72bd9487; size =     63630; name = SAM1.EXE
+    file[]: crc = dbac876c; size =     22885; name = SAM1.TTL
+    file[]: crc = da06a3de; size =    129024; name = SAM101.GFX
+    file[]: crc = f9875c86; size =      7320; name = SAM101E.SND
+    file[]: crc = 183d8204; size =      6144; name = SAM102.GFX
+    file[]: crc = 28180ad5; size =      7320; name = SAM102E.SND
+    file[]: crc = 57554bca; size =     34272; name = SAM103.GFX
+    file[]: crc = 2cbfb7b5; size =      7320; name = SAM103E.SND
+    file[]: crc = abf56ada; size =     16304; name = SAM2.APO
+    file[]: crc = 6c1713ee; size =     17420; name = SAM2.CRD
+    file[]: crc = 0a92a42e; size =     20869; name = SAM2.END
+    file[]: crc = 26410b95; size =     63950; name = SAM2.EXE
+    file[]: crc = 90d620d5; size =     22450; name = SAM2.TTL
+    file[]: crc = 4fec6e40; size =    129024; name = SAM201.GFX
+    file[]: crc = f9875c86; size =      7320; name = SAM201E.SND
+    file[]: crc = 183d8204; size =      6144; name = SAM202.GFX
+    file[]: crc = 434af0e5; size =      7320; name = SAM202E.SND
+    file[]: crc = b8b09cb6; size =     34272; name = SAM203.GFX
+    file[]: crc = 2cbfb7b5; size =      7320; name = SAM203E.SND
+    file[]: crc = abf56ada; size =     16304; name = SAM3.APO
+    file[]: crc = 6c1713ee; size =     17420; name = SAM3.CRD
+    file[]: crc = 2e548fec; size =     63888; name = SAM3.EXE
+    file[]: crc = 7548d763; size =     22211; name = SAM3.TTL
+    file[]: crc = e9696344; size =    129024; name = SAM301.GFX
+    file[]: crc = f9875c86; size =      7320; name = SAM301E.SND
+    file[]: crc = 183d8204; size =      6144; name = SAM302.GFX
+    file[]: crc = 434af0e5; size =      7320; name = SAM302E.SND
+    file[]: crc = bf897b9c; size =     34272; name = SAM303.GFX
+    file[]: crc = 2cbfb7b5; size =      7320; name = SAM303E.SND
+    file[]: crc = 8777b364; size =     28902; name = SAM3A.END
+    file[]: crc = 742ffb60; size =     21658; name = SAM3B.END
+end
+
+//
+// v1.0, 1x720K, Install 
+//
+installer[v1.0-1x720k-install]:
+    name = v1.0, 1x720K, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = SAM123.EXE
+    anchorfile = SAM123.EXE
+    file[]: crc = 1f60f75f; size =    564944; name = SAM123.EXE
+end
+
+end

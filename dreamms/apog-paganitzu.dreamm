@@ -1,0 +1,143 @@
+//
+// Paganitzu
+//
+desc[apog-paganitzu]:
+
+name = Paganitzu
+icon = apog-paganitzu.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(EXENAME) $(VIDEO) -J -S
+mips = $(MIPS_386DX_33)
+nothrottle = 2
+ramkb = 4096
+filter = apogee software, puzzle
+audiohw = speaker
+videohw = ega
+
+//
+// part configuration
+//
+config[part]:
+    title = Part Configuration
+    option[part1]:
+        name = Part I: “Romancing the Rose”
+        condition = file_exists("$$(rootpath)\\PAGA1.EXE")
+        EXENAME = PAGA1.EXE
+    end
+    option[part2]:
+        name = Part II: “Quest for the Silver Dagger”
+        condition = file_exists("$$(rootpath)\\PAGA2.EXE")
+        EXENAME = PAGA2.EXE
+    end
+    option[part3]:
+        name = Part III: “Jewel of the Yucatan”
+        condition = file_exists("$$(rootpath)\\PAGA3.EXE")
+        EXENAME = PAGA3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+        VIDEO = -C
+    end
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+        VIDEO = -E
+    end
+end
+
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.02 
+//
+game[v1.02]:
+    name = v1.02
+    anchorfile = PAGA1.EXE
+    file[]: crc = b07d68de; size =     75033; name = PAGA1.001
+    file[]: crc = 57ba2a0f; size =     80032; name = PAGA1.002
+    file[]: crc = de3d35cd; size =      2097; name = PAGA1.003
+    file[]: crc = c6b736f6; size =     32672; name = PAGA1.004
+    file[]: crc = 7d6cfd9d; size =     23591; name = PAGA1.005
+    file[]: crc = 9426a225; size =     73260; name = PAGA1.006
+    file[]: crc = dbf1ddf2; size =      9271; name = PAGA1.007
+    file[]: crc = 7e4dc133; size =     13255; name = PAGA1.008
+    file[]: crc = a401fa2e; size =     43139; name = PAGA1.009
+    file[]: crc = cd7cc9eb; size =     13807; name = PAGA1.010
+    file[]: crc = 3b5b92a2; size =     13807; name = PAGA1.011
+    file[]: crc = d699e5da; size =     13807; name = PAGA1.012
+    file[]: crc = 596d144d; size =     13807; name = PAGA1.013
+    file[]: crc = 86e4f733; size =       347; name = PAGA1.014
+    file[]: crc = 4ae50a45; size =       347; name = PAGA1.015
+    file[]: crc = 068e9281; size =     13255; name = PAGA1.016
+    file[]: crc = bbc4788a; size =     11398; name = PAGA1.EXE
+    file[]: crc = a4975ede; size =     78174; name = PAGA2.001
+    file[]: crc = a19852c3; size =     87834; name = PAGA2.002
+    file[]: crc = de3d35cd; size =      2097; name = PAGA2.003
+    file[]: crc = a5a913bc; size =     69544; name = PAGA2.004
+    file[]: crc = 346eb979; size =     35471; name = PAGA2.005
+    file[]: crc = a5315265; size =     90211; name = PAGA2.006
+    file[]: crc = 42249c32; size =      9271; name = PAGA2.007
+    file[]: crc = 0be80901; size =    104802; name = PAGA2.008
+    file[]: crc = 5f886908; size =      1735; name = PAGA2.009
+    file[]: crc = 94a3bce1; size =     13807; name = PAGA2.010
+    file[]: crc = 209614ce; size =     13807; name = PAGA2.011
+    file[]: crc = 325b085c; size =     13807; name = PAGA2.012
+    file[]: crc = ea63c266; size =     13807; name = PAGA2.013
+    file[]: crc = 86e4f733; size =       347; name = PAGA2.014
+    file[]: crc = 4ae50a45; size =       347; name = PAGA2.015
+    file[]: crc = cf3b4adc; size =     13807; name = PAGA2.016
+    file[]: crc = a0360218; size =     13807; name = PAGA2.017
+    file[]: crc = bbbf5692; size =     13807; name = PAGA2.018
+    file[]: crc = 1b79a3e7; size =     13807; name = PAGA2.019
+    file[]: crc = 0ae4def6; size =     13807; name = PAGA2.020
+    file[]: crc = 137a9bd3; size =     13807; name = PAGA2.021
+    file[]: crc = 90d1bc1a; size =     11398; name = PAGA2.EXE
+    file[]: crc = fdc5ef59; size =     71421; name = PAGA3.001
+    file[]: crc = 708057de; size =     84565; name = PAGA3.002
+    file[]: crc = de3d35cd; size =      2097; name = PAGA3.003
+    file[]: crc = f0cb6980; size =     91098; name = PAGA3.004
+    file[]: crc = 46b9dd3b; size =     53295; name = PAGA3.005
+    file[]: crc = 26ad7a68; size =     56927; name = PAGA3.006
+    file[]: crc = 30dd5a49; size =     11587; name = PAGA3.007
+    file[]: crc = 209673a3; size =    191973; name = PAGA3.008
+    file[]: crc = bf907450; size =     62494; name = PAGA3.009
+    file[]: crc = 54ba7b78; size =     13807; name = PAGA3.010
+    file[]: crc = 9be73b31; size =     13807; name = PAGA3.011
+    file[]: crc = 40cf78b8; size =     13807; name = PAGA3.012
+    file[]: crc = f62f5f64; size =     13807; name = PAGA3.013
+    file[]: crc = 86e4f733; size =       347; name = PAGA3.014
+    file[]: crc = 4ae50a45; size =       347; name = PAGA3.015
+    file[]: crc = 537f69da; size =     13807; name = PAGA3.016
+    file[]: crc = d797544b; size =     13807; name = PAGA3.017
+    file[]: crc = 42e64431; size =     74438; name = PAGA3.018
+    file[]: crc = 8c81b20a; size =     11398; name = PAGA3.EXE
+end
+
+//
+// v1.02, 1x1.44M, Install 
+//
+installer[v1.02-1x1.44m-install]:
+    name = v1.02, 1x1.44M, Install 
+    installid = v1.02
+    mips = $(MIPS_MAX)
+    launch = PAGA123.EXE
+    anchorfile = PAGA123.EXE
+    file[]: crc = 02d5423e; size =   1107384; name = PAGA123.EXE
+end
+
+end

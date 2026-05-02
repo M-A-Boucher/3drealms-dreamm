@@ -1,0 +1,88 @@
+//
+// Monuments of Mars
+//
+desc[apog-mars]:
+
+name = Monuments of Mars
+icon = apog-mars.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(EXENAME)
+mips = $(MIPS_386DX_33)
+nothrottle = 2
+ramkb = 4096
+filter = apogee software, action
+audiohw = speaker
+videohw = cga
+
+//
+// volume configuration
+//
+config[volume]:
+    title = Volume Configuration
+    option[volume1]:
+        name = Vol. 1: “First Contact”
+        condition = file_exists("$$(rootpath)\\MARS1.EXE")
+        EXENAME = MARS1.EXE
+    end
+    option[volume2]:
+        name = Vol. 2: “The Pyramid”
+        condition = file_exists("$$(rootpath)\\MARS2.EXE")
+        EXENAME = MARS2.EXE
+    end
+    option[volume3]:
+        name = Vol. 3: “The Fortress”
+        condition = file_exists("$$(rootpath)\\MARS3.EXE")
+        EXENAME = MARS3.EXE
+    end
+    option[volume4]:
+        name = Vol. 4: “The Face”
+        condition = file_exists("$$(rootpath)\\MARS4.EXE")
+        EXENAME = MARS4.EXE
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0 
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = MARS1.EXE
+    file[]: crc = e041a5e3; size =      7947; name = MARS1.CF1
+    file[]: crc = ba3887a5; size =      4377; name = MARS1.CF2
+    file[]: crc = 9e185426; size =     42433; name = MARS1.EXE
+    file[]: crc = c2373323; size =     16600; name = MARS1.IGS
+    file[]: crc = e041a5e3; size =      7947; name = MARS2.CF1
+    file[]: crc = ba3887a5; size =      4377; name = MARS2.CF2
+    file[]: crc = 54e65973; size =     43160; name = MARS2.EXE
+    file[]: crc = ce3e927d; size =     16700; name = MARS2.IGS
+    file[]: crc = e041a5e3; size =      7947; name = MARS3.CF1
+    file[]: crc = ba3887a5; size =      4377; name = MARS3.CF2
+    file[]: crc = cd21fdea; size =     43208; name = MARS3.EXE
+    file[]: crc = ce3e927d; size =     16700; name = MARS3.IGS
+    file[]: crc = e041a5e3; size =      7947; name = MARS4.CF1
+    file[]: crc = ba3887a5; size =      4377; name = MARS4.CF2
+    file[]: crc = 2560bd45; size =     43384; name = MARS4.EXE
+    file[]: crc = 57b5eca6; size =     16700; name = MARS4.IGS
+end
+
+//
+// v1.0, 1x720K, Install 
+//
+installer[v1.0-1x720k-install]:
+    name = v1.0, 1x720K, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = MARS.EXE
+    anchorfile = MARS.EXE
+    file[]: crc = 92f511db; size =    219621; name = MARS.EXE
+end
+
+end
