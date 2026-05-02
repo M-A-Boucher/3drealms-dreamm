@@ -114,10 +114,10 @@ installer[v1.0-1x720k-install]:
 end
 
 //
-// GOG 
+// 3D Realms Anthology 
 //
-game[gog]:
-    name = GOG
+game[v1.0-anthology]:
+    name = 3D Realms Anthology (v1.0)
     imports = v1.0
     anchorfile = SAM1.EXE
     file[]: crc = fef2d31f; size =     63630; name = SAM1.EXE
