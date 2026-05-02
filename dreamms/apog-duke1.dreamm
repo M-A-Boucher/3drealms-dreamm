@@ -177,7 +177,7 @@ game[v1.0]:
     file[]: crc = 73d30ab9; size =      8064; name = MAN4.DN1
     file[]: crc = 73d30ab9; size =      8064; name = MAN4.DN2
     file[]: crc = 73d30ab9; size =      8064; name = MAN4.DN3
-    file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN1
+    file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN1 ; optional = true // Thanks GOG /s
     file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN2
     file[]: crc = fce73898; size =     17002; name = MY_DEMO.DN3
     file[]: crc = 971db682; size =      7168; name = NUMBERS.DN1

@@ -1,0 +1,132 @@
+//
+// Crystal Caves
+//
+desc[apog-caves]:
+
+name = Crystal Caves
+icon = apog-caves.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(EXENAME)
+mips = $(MIPS_386DX_33)
+nothrottle = 5
+ramkb = 4096
+filter = apogee software, action
+audiohw = adlib
+videohw = ega
+
+//
+// volume configuration
+//
+config[volume]:
+    title = Volume Configuration
+    option[volume1]:
+        name = Vol 1: “Troubles with Twibbles”
+        condition = file_exists("$$(rootpath)\\CC1.EXE")
+        EXENAME = CC1.EXE
+    end
+    option[mission2]:
+        name = Vol 2: “Slugging It Out”
+        condition = file_exists("$$(rootpath)\\CC2.EXE")
+        EXENAME = CC2.EXE
+    end
+    option[mission3]:
+        name = Vol 3: “Mylo versus the Supernova”
+        condition = file_exists("$$(rootpath)\\CC3.EXE")
+        EXENAME = CC3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0 
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = CC1.EXE
+    file[]: crc = 4b469c40; size =      7320; name = CC1-1.SND
+    file[]: crc = 623318a6; size =      7320; name = CC1-2.SND
+    file[]: crc = 272a69f7; size =      7320; name = CC1-3.SND
+    file[]: crc = 2e36f797; size =      2048; name = CC1-F1.MNI
+    file[]: crc = b3e23d8d; size =      2048; name = CC1-F2.MNI
+    file[]: crc = f749e4ca; size =      2048; name = CC1-SPL.MNI
+    file[]: crc = abf56ada; size =     16304; name = CC1.APG
+    file[]: crc = 775e7fed; size =     26717; name = CC1.CDT
+    file[]: crc = 4093b70e; size =     19625; name = CC1.END
+    file[]: crc = 3ceae090; size =     73240; name = CC1.EXE
+    file[]: crc = 5bff4464; size =    184069; name = CC1.GFX
+    file[]: crc = b3eb1a2e; size =     18328; name = CC1.TTL
+    file[]: crc = 4b469c40; size =      7320; name = CC2-1.SND
+    file[]: crc = 623318a6; size =      7320; name = CC2-2.SND
+    file[]: crc = 272a69f7; size =      7320; name = CC2-3.SND
+    file[]: crc = 2e36f797; size =      2048; name = CC2-F1.MNI
+    file[]: crc = b3e23d8d; size =      2048; name = CC2-F2.MNI
+    file[]: crc = f749e4ca; size =      2048; name = CC2-SPL.MNI
+    file[]: crc = abf56ada; size =     16304; name = CC2.APG
+    file[]: crc = 775e7fed; size =     26717; name = CC2.CDT
+    file[]: crc = d66a3152; size =     27486; name = CC2.END
+    file[]: crc = 9ea24fc1; size =     72858; name = CC2.EXE
+    file[]: crc = 5bff4464; size =    184069; name = CC2.GFX
+    file[]: crc = da0d4f30; size =     18201; name = CC2.TTL
+    file[]: crc = 4b469c40; size =      7320; name = CC3-1.SND
+    file[]: crc = 623318a6; size =      7320; name = CC3-2.SND
+    file[]: crc = 272a69f7; size =      7320; name = CC3-3.SND
+    file[]: crc = 16cbf452; size =     13412; name = CC3-END1.END
+    file[]: crc = b5f53554; size =     17231; name = CC3-END2.END
+    file[]: crc = f968b916; size =     23922; name = CC3-END3.END
+    file[]: crc = 2e36f797; size =      2048; name = CC3-F1.MNI
+    file[]: crc = b3e23d8d; size =      2048; name = CC3-F2.MNI
+    file[]: crc = f749e4ca; size =      2048; name = CC3-SPL.MNI
+    file[]: crc = abf56ada; size =     16304; name = CC3.APG
+    file[]: crc = 775e7fed; size =     26717; name = CC3.CDT
+    file[]: crc = d51e340d; size =     75524; name = CC3.EXE
+    file[]: crc = 5bff4464; size =    184069; name = CC3.GFX
+    file[]: crc = c062644c; size =     18493; name = CC3.TTL
+end
+
+//
+// v1.0, 1x720K, Install 
+//
+installer[v1.0-1x720k-install]:
+    name = v1.0, 1x720K, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = CAVES123.EXE
+    anchorfile = CAVES123.EXE
+    file[]: crc = fba34f5a; size =    518204; name = CAVES123.EXE
+end
+
+//
+// GOG 
+//
+game[gog]:
+    name = GOG
+    imports = v1.0
+    anchorfile = CC1.EXE
+    file[]: crc = 7be5f203; size =     73256; name = CC1.EXE
+    file[]: crc = cf766c2e; size =     72858; name = CC2.EXE
+    file[]: crc = 9c059b24; size =     75524; name = CC3.EXE
+end
+
+end
