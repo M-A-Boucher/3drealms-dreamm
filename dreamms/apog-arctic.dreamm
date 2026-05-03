@@ -1,0 +1,102 @@
+//
+// Arctic Adventure
+//
+desc[apog-arctic]:
+
+name = Arctic Adventure
+icon = apog-arctic.png
+machine = pc
+osenv = dos
+rootpath = C:\
+mips = $(MIPS_286_10)
+nothrottle = 5
+ramkb = 640
+filter = apogee software, action
+audiohw = speaker
+
+//
+// volume configuration
+//
+config[volume]:
+    title = Volume Configuration
+    option[volume1]:
+        name = Volume 1
+        condition = file_exists("$$(rootpath)\\AA1.EXE")
+        launch = AA1.EXE
+    end
+    option[volume2]:
+        name = Volume 2
+        condition = file_exists("$$(rootpath)\\AA2.EXE")
+        launch = AA2.EXE
+    end
+    option[volume3]:
+        name = Volume 3
+        condition = file_exists("$$(rootpath)\\AA3.EXE")
+        launch = AA3.EXE
+    end
+    option[volume4]:
+        name = Volume 4
+        condition = file_exists("$$(rootpath)\\AA4.EXE")
+        launch = AA4.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[cga]:
+        name = $(CGA_NAME); priority = 1
+        videohw = cga
+    end
+    option[ega]:
+        name = $(EGA_NAME)
+        videohw = ega
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v2.0 
+//
+game[v2.0]:
+    name = v2.0
+    anchorfile = AA1.EXE
+    file[]: crc = 76531b31; size =     64707; name = AA1.EXE
+    file[]: crc = aac6dc34; size =      5372; name = AA1.MAP
+    file[]: crc = 9b4957e6; size =      6462; name = AA1.MNU
+    file[]: crc = ae9b9c5e; size =      4848; name = AA1.PIX
+    file[]: crc = 5c73df88; size =     64611; name = AA2.EXE
+    file[]: crc = aac6dc34; size =      5372; name = AA2.MAP
+    file[]: crc = 290d29ea; size =      6464; name = AA2.MNU
+    file[]: crc = ae9b9c5e; size =      4848; name = AA2.PIX
+    file[]: crc = 53a0acf5; size =     64403; name = AA3.EXE
+    file[]: crc = aac6dc34; size =      5372; name = AA3.MAP
+    file[]: crc = 9752f247; size =      6464; name = AA3.MNU
+    file[]: crc = ae9b9c5e; size =      4848; name = AA3.PIX
+    file[]: crc = 99127467; size =     64355; name = AA4.EXE
+    file[]: crc = aac6dc34; size =      5372; name = AA4.MAP
+    file[]: crc = b7c08c07; size =      6466; name = AA4.MNU
+    file[]: crc = ae9b9c5e; size =      4848; name = AA4.PIX
+
+end
+
+//
+// v2.0, 1x720K, Install 
+//
+installer[v2.0-1x720k-install]:
+    name = v2.0, 1x720K, Install 
+    installid = v2.0
+    mips = $(MIPS_MAX)
+    launch = ARCTIC.EXE
+    anchorfile = ARCTIC.EXE
+    file[]: crc = a55517e1; size =    289462; name = ARCTIC.EXE
+end
+
+end

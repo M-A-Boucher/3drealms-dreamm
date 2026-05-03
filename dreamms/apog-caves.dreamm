@@ -26,12 +26,12 @@ config[volume]:
         condition = file_exists("$$(rootpath)\\CC1.EXE")
         EXENAME = CC1.EXE
     end
-    option[mission2]:
+    option[volume2]:
         name = Vol 2: “Slugging It Out”
         condition = file_exists("$$(rootpath)\\CC2.EXE")
         EXENAME = CC2.EXE
     end
-    option[mission3]:
+    option[volume3]:
         name = Vol 3: “Mylo versus the Supernova”
         condition = file_exists("$$(rootpath)\\CC3.EXE")
         EXENAME = CC3.EXE
