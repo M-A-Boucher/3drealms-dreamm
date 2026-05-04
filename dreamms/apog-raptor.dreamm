@@ -1,0 +1,190 @@
+//
+// Raptor: Call of the Shadows
+//
+desc[apog-raptor]:
+
+name = Raptor: Call of the Shadows
+icon = apog-raptor.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = RAP.EXE
+mips = $(MIPS_MAX)
+ramkb = 8192
+filter = apogee software, action
+audiohw = $(SOUNDHW)+$(MUSICHW)
+
+//
+// controls configuration
+//
+config[controls]:
+    title = Controls Configuration
+    option[keyboard]:
+        name = Keyboard
+        CONTROL_CONFIG = [[[$(CRLF)
+            Control=0
+        ]]]
+    end
+    option[mouse]:
+        name = Mouse
+        CONTROL_CONFIG = [[[$(CRLF)
+            Control=1
+        ]]]
+    end
+    option[joystick]:
+        name = Joystick
+        CONTROL_CONFIG = [[[$(CRLF)
+            Control=2
+        ]]]
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// music configuration
+//
+config[music]:
+    title = Music Configuration
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        MUSICHW = adlib
+        MUSIC_CONFIG = [[[$(CRLF)
+            CardType=2
+            Channels=4
+        ]]]
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        MUSICHW = sb16
+        MUSIC_CONFIG = [[[$(CRLF)
+            CardType=5
+            BasePort=220
+            Irq=7
+            Dma=1
+        ]]]
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        MUSICHW = gmidi
+        MUSIC_CONFIG = [[[$(CRLF)
+            CardType=8
+            MidiPort=330
+        ]]]
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        SOUNDHW = speaker
+        SOUND_CONFIG = [[[$(CRLF)
+            CardType=1
+            Channels=4
+        ]]]
+    end
+    option[adlib]:
+        name = $(ADLIB_NAME)
+        SOUNDHW = adlib
+        SOUND_CONFIG = [[[$(CRLF)
+            CardType=2
+            Channels=4
+        ]]]       
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        SOUNDHW = sb16
+        SOUND_CONFIG = [[[$(CRLF)
+            CardType=5
+            BasePort=220
+            Irq=7
+            Dma=1
+            Channels=8
+        ]]]
+    end
+    option[gmidi]:
+        name = $(GMIDI_NAME)
+        SOUNDHW = gmidi
+        SOUND_CONFIG = [[[$(CRLF)
+            CardType=8
+            Channels=4
+            MidiPort=330
+        ]]]
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\SETUP.INI
+    contents = [[[$(CRLF)
+        [Setup]
+        Detail=1
+        $(CONTROL_CONFIG)
+
+        [Music]
+        Volume=85
+        $(MUSIC_CONFIG)
+
+        [SoundFX]
+        Volume=85
+        $(SOUND_CONFIG)
+
+        [Keyboard]
+        MoveUp=72
+        MoveDn=80
+        MoveLeft=75
+        MoveRight=77
+        Fire=29
+        FireSp=56
+        ChangeSp=57
+        MegaFire=54
+
+        [Mouse]
+        Fire=0
+        FireSp=1
+        ChangeSp=2
+
+        [JoyStick]
+        Fire=0
+        FireSp=1
+        ChangeSp=2
+        MegaFire=3
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.2 
+//
+game[v1.2]:
+    name = v1.2
+    anchorfile = RAP.EXE
+    file[]: crc = 6a5b5904; size =    575577; name = FILE0000.GLB
+    file[]: crc = 2d5af23f; size =   4027556; name = FILE0001.GLB
+    file[]: crc = 58e43bd0; size =   2479606; name = FILE0002.GLB
+    file[]: crc = 2b01ccbe; size =   2370048; name = FILE0003.GLB
+    file[]: crc = 74dad8ef; size =   1934325; name = FILE0004.GLB
+    file[]: crc = 3775545e; size =       447; name = FILE_ID.DIZ
+    file[]: crc = fae4be45; size =     16429; name = RAP-HELP.EXE; optional = true
+    file[]: crc = 7686d1c0; size =    474359; name = RAP.EXE
+    file[]: crc = 285828a1; size =     64772; name = SETUP.EXE   ; optional = true
+end
+
+end
