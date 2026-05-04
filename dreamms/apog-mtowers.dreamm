@@ -1,0 +1,79 @@
+//
+// Mystic Towers
+//
+desc[apog-mtowers]:
+
+name = Mystic Towers
+icon = apog-mtowers.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = TOWERS.EXE
+mips = $(MIPS_386SX_20)
+ramkb = 4096
+filter = apogee software, action
+videohw = vga
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        INSTALL.EXE
+        MT_123.EXE
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+script[autoinstall]:
+    condition = is_installer()
+    code = [[[$(CRLF)
+        input_lockout(true);
+        wait("int16", 0x00); keyboard_type("\r");
+        wait("int16", 0x00); keyboard_type("C");
+        input_lockout(false);
+    ]]]
+end
+
+//
+// v1.1 
+//
+game[v1.1]:
+    name = v1.1
+    anchorfile = TOWERS.EXE
+    file[]: crc = 9abc20f0; size =   3415552; name = RGMYSTUS.DAT
+    file[]: crc = 4896b73e; size =    102800; name = TOWERS.EXE
+end
+
+//
+// v1.1, 1x1.44M, Install 
+//
+installer[v1.1-1x1.44m-install]:
+    name = v1.1, 1x1.44M, Install 
+    installid = v1.1
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = MT_123._1
+    file[]: crc = bb7f80b3; size =     33435; name = INSTALL.EXE
+    file[]: crc = 3e42ee13; size =   1319898; name = MT_123._1
+end
+
+end

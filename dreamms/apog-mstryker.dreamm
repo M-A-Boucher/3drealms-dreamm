@@ -1,0 +1,80 @@
+//
+// Major Stryker
+//
+desc[apog-mstryker]:
+
+name = Major Stryker
+icon = apog-mstryker.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = STRYKER.EXE
+mips = $(MIPS_386SX_20)
+nothrottle = 4
+ramkb = 4096
+filter = apogee software, action
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[speaker]:
+        name = $(SPEAKER_NAME)
+        audiohw = speaker
+    end
+    option[sb16]:
+        name = $(SB16_NAME); priority = 1
+        audiohw = sb16
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.4 
+//
+game[v1.4]:
+    name = v1.4
+    anchorfile = STRYKER.EXE
+    file[]: crc = 7514ae22; size =     85104; name = STRYKER.EXE
+    file[]: crc = e75c11f0; size =    890061; name = VOLUME1A.MS1
+    file[]: crc = 2bf208d2; size =    861752; name = VOLUME1B.MS1
+    file[]: crc = c31dc74a; size =    890061; name = VOLUME2A.MS2
+    file[]: crc = bc1b26b3; size =    875165; name = VOLUME2B.MS2
+    file[]: crc = 8038473c; size =    808141; name = VOLUME3A.MS3
+    file[]: crc = ddb60023; size =    932247; name = VOLUME3B.MS3
+end
+
+//
+// v1.4, 1x1.44M, Install 
+//
+installer[v1.4-1x1.44m-install]:
+    name = v1.4, 1x1.44M, Install 
+    installid = v1.4
+    mips = $(MIPS_MAX)
+    launch = MAJOR123.EXE
+    anchorfile = MAJOR123.EXE
+    file[]: crc = 8d3ad54f; size =   1269774; name = MAJOR123.EXE
+end
+
+end
