@@ -1,0 +1,146 @@
+//
+// Dark Ages
+//
+desc[apog-darkages]:
+
+name = Dark Ages
+icon = apog-darkages.png
+machine = pc
+osenv = dos
+rootpath = C:\
+mips = $(MIPS_386SX_20)
+nothrottle = 2
+ramkb = 1024
+filter = apogee software, action
+audiohw = adlib
+
+//
+// volume configuration
+//
+config[volume]:
+    title = Volume Configuration
+    option[volume1]:
+        name = Volume 1: Prince of Destiny
+        condition = file_exists("$$(rootpath)\\DA1.EXE")
+        launch = DA1.EXE
+    end
+    option[volume2]:
+        name = Volume 2: The Undead Kingdom
+        condition = file_exists("$$(rootpath)\\DA2.EXE")
+        launch = DA2.EXE
+    end
+    option[volume3]:
+        name = Volume 3: Dungeons of Doom
+        condition = file_exists("$$(rootpath)\\DA3.EXE")
+        launch = DA3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.0 
+//
+game[v1.0]:
+    name = v1.0
+    anchorfile = DA1.EXE
+    file[]: crc = 3870e512; size =     48611; name = DA1.EXE
+    file[]: crc = 7a0a75ee; size =     48543; name = DA2.EXE
+    file[]: crc = a3bf475e; size =     48326; name = DA3.EXE
+    file[]: crc = 347d9b77; size =     29706; name = FILE01.DA1
+    file[]: crc = 347d9b77; size =     29706; name = FILE01.DA2
+    file[]: crc = 347d9b77; size =     29706; name = FILE01.DA3
+    file[]: crc = e3ee9276; size =     16702; name = FILE02.DA1
+    file[]: crc = eb3bd618; size =     16538; name = FILE02.DA2
+    file[]: crc = b32def4e; size =     16814; name = FILE02.DA3
+    file[]: crc = b71090c9; size =     16537; name = FILE03.DA1
+    file[]: crc = b71090c9; size =     16537; name = FILE03.DA2
+    file[]: crc = b71090c9; size =     16537; name = FILE03.DA3
+    file[]: crc = 86e9d2f9; size =     19583; name = FILE04.DA1
+    file[]: crc = 6e9c8a0b; size =     20705; name = FILE04.DA2
+    file[]: crc = add68967; size =     21577; name = FILE04.DA3
+    file[]: crc = f8d8a1d2; size =     11520; name = FILE05.DA1
+    file[]: crc = 6c422423; size =     11520; name = FILE05.DA2
+    file[]: crc = d283ccc5; size =     11520; name = FILE05.DA3
+    file[]: crc = 34a8f9bd; size =      8064; name = FILE06.DA1
+    file[]: crc = 34a8f9bd; size =      8064; name = FILE06.DA2
+    file[]: crc = 34a8f9bd; size =      8064; name = FILE06.DA3
+    file[]: crc = 593a3e6e; size =      8064; name = FILE07.DA1
+    file[]: crc = 593a3e6e; size =      8064; name = FILE07.DA2
+    file[]: crc = 593a3e6e; size =      8064; name = FILE07.DA3
+    file[]: crc = a2c83add; size =      8064; name = FILE08.DA1
+    file[]: crc = a2c83add; size =      8064; name = FILE08.DA2
+    file[]: crc = a2c83add; size =      8064; name = FILE08.DA3
+    file[]: crc = 0721f174; size =      8064; name = FILE09.DA1
+    file[]: crc = 0721f174; size =      8064; name = FILE09.DA2
+    file[]: crc = 0721f174; size =      8064; name = FILE09.DA3
+    file[]: crc = dcd2d405; size =      8064; name = FILE10.DA1
+    file[]: crc = dcd2d405; size =      8064; name = FILE10.DA2
+    file[]: crc = dcd2d405; size =      8064; name = FILE10.DA3
+    file[]: crc = e2730d8b; size =      8064; name = FILE11.DA1
+    file[]: crc = e2730d8b; size =      8064; name = FILE11.DA2
+    file[]: crc = e2730d8b; size =      8064; name = FILE11.DA3
+    file[]: crc = a8cd76ff; size =       384; name = FILE12.DA1
+    file[]: crc = a8cd76ff; size =       384; name = FILE12.DA2
+    file[]: crc = a8cd76ff; size =       384; name = FILE12.DA3
+    file[]: crc = e52d2478; size =       561; name = FILE13.DA1
+    file[]: crc = e52d2478; size =       561; name = FILE13.DA2
+    file[]: crc = e52d2478; size =       561; name = FILE13.DA3
+    file[]: crc = d5e3dc12; size =     18948; name = FILE14.DA1
+    file[]: crc = d5e3dc12; size =     18948; name = FILE14.DA2
+    file[]: crc = d5e3dc12; size =     18948; name = FILE14.DA3
+    file[]: crc = 5d523865; size =     11491; name = FILE15.DA1
+    file[]: crc = 5d523865; size =     11491; name = FILE15.DA2
+    file[]: crc = 5d523865; size =     11491; name = FILE15.DA3
+    file[]: crc = 094d317b; size =     18283; name = FILE16.DA1
+    file[]: crc = 094d317b; size =     18283; name = FILE16.DA2
+    file[]: crc = 094d317b; size =     18283; name = FILE16.DA3
+    file[]: crc = e25ae78d; size =     24864; name = FILE17.DA1
+    file[]: crc = e25ae78d; size =     24864; name = FILE17.DA2
+    file[]: crc = e25ae78d; size =     24864; name = FILE17.DA3
+    file[]: crc = d70f1127; size =      1043; name = FILE18.DA1
+    file[]: crc = d70f1127; size =      1043; name = FILE18.DA2
+    file[]: crc = d70f1127; size =      1043; name = FILE18.DA3
+    file[]: crc = 5895f193; size =     18963; name = FILE19.DA1
+    file[]: crc = 5895f193; size =     18963; name = FILE19.DA2
+    file[]: crc = 5895f193; size =     18963; name = FILE19.DA3
+    file[]: crc = f7009e50; size =      1594; name = FILE20.DA1
+    file[]: crc = f7009e50; size =      1594; name = FILE20.DA2
+    file[]: crc = f7009e50; size =      1594; name = FILE20.DA3
+    file[]: crc = 6875559b; size =     19402; name = FILE21.DA1
+    file[]: crc = 6875559b; size =     19402; name = FILE21.DA2
+    file[]: crc = 6875559b; size =     19402; name = FILE21.DA3
+end
+
+//
+// v1.0, 1x720K, Install 
+//
+installer[v1.0-1x720k-install]:
+    name = v1.0, 1x720K, Install 
+    installid = v1.0
+    mips = $(MIPS_MAX)
+    launch = DA123.EXE
+    anchorfile = DA123.EXE
+    file[]: crc = baadacf0; size =    395581; name = DA123.EXE
+end
+
+end

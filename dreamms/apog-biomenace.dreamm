@@ -1,0 +1,128 @@
+//
+// Bio Menace
+//
+desc[apog-biomenace]:
+
+name = Bio Menace
+icon = apog-biomenace.png
+machine = pc
+osenv = dos
+rootpath = C:\
+mips = $(MIPS_386SX_20)
+nothrottle = 2
+ramkb = 4096
+filter = apogee software, action
+audiohw = adlib
+
+//
+// episode configuration
+//
+config[episode]:
+    title = Episode Configuration
+    option[episode1]:
+        name = Episode One: Dr. Mangle’s Lab
+        condition = file_exists("$$(rootpath)\\BMENACE1.EXE")
+        launch = BMENACE1.EXE
+    end
+    option[episode2]:
+        name = Episode Two: The Hidden Lab
+        condition = file_exists("$$(rootpath)\\BMENACE2.EXE")
+        launch = BMENACE2.EXE
+    end
+    option[episode3]:
+        name = Episode Three: Master Cain
+        condition = file_exists("$$(rootpath)\\BMENACE3.EXE")
+        launch = BMENACE3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[cga]:
+        name = $(CGA_NAME)
+        videohw = cga
+    end
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DREAMM.BAT
+    contents = [[[$(CRLF)
+        COPY BIO123.1+BIO123.2 BIO123.EXE
+        BIO123.EXE
+    ]]]
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.1 
+//
+game[v1.1]:
+    name = v1.1
+    anchorfile = BMENACE1.EXE
+    file[]: crc = 84dfc7b8; size =       580; name = AUDIOHED.BM1
+    file[]: crc = d007b1fb; size =       564; name = AUDIOHED.BM2
+    file[]: crc = 7db93b51; size =       552; name = AUDIOHED.BM3
+    file[]: crc = 920e8faf; size =    205754; name = AUDIOT.BM1
+    file[]: crc = fdd31c14; size =    244224; name = AUDIOT.BM2
+    file[]: crc = 2e831f51; size =    201662; name = AUDIOT.BM3
+    file[]: crc = 04f9f981; size =     12347; name = BM-HELP.EXE ; optional = true
+    file[]: crc = 38ebc6dd; size =     10315; name = BM-HINT.EXE ; optional = true
+    file[]: crc = a445576c; size =     89274; name = BMENACE1.EXE
+    file[]: crc = ae9296b2; size =     89231; name = BMENACE2.EXE
+    file[]: crc = 33b6551d; size =     89048; name = BMENACE3.EXE
+    file[]: crc = 629503df; size =      1024; name = EGADICT.BM1
+    file[]: crc = 1d5b8daa; size =      1024; name = EGADICT.BM2
+    file[]: crc = 9256a0be; size =      1024; name = EGADICT.BM3
+    file[]: crc = 2454d561; size =    501816; name = EGAGRAPH.BM1
+    file[]: crc = 0633cb47; size =    479241; name = EGAGRAPH.BM2
+    file[]: crc = a3303aa3; size =    412364; name = EGAGRAPH.BM3
+    file[]: crc = 77c23274; size =     13866; name = EGAHEAD.BM1
+    file[]: crc = c3d8b425; size =     13947; name = EGAHEAD.BM2
+    file[]: crc = a90ed136; size =     12693; name = EGAHEAD.BM3
+    file[]: crc = 07270653; size =      1658; name = GAMEMAPS.BM1
+    file[]: crc = 8936832d; size =      1318; name = GAMEMAPS.BM2
+    file[]: crc = 2ce1200a; size =        11; name = GAMEMAPS.BM3
+    file[]: crc = 39ce4fbc; size =        46; name = GFXINFOE.BM1
+    file[]: crc = a87470d2; size =        46; name = GFXINFOE.BM2
+    file[]: crc = 8560d120; size =        46; name = GFXINFOE.BM3
+    file[]: crc = b8ededc7; size =     22200; name = MAPHEAD.BM1
+    file[]: crc = 89a765d5; size =     21120; name = MAPHEAD.BM2
+    file[]: crc = 6aa1b2fd; size =     21336; name = MAPHEAD.BM3
+    file[]: crc = 2aea356c; size =    165402; name = MAPTEMP.BM1
+    file[]: crc = 67bfed4c; size =    196526; name = MAPTEMP.BM2
+    file[]: crc = 17118070; size =    197166; name = MAPTEMP.BM3
+    file[]: crc = e7a24028; size =      4234; name = MAPTHEAD.BM1
+    file[]: crc = 59a6cd78; size =      4325; name = MAPTHEAD.BM2
+    file[]: crc = 088c5f29; size =      4412; name = MAPTHEAD.BM3
+end
+
+//
+// v1.1, 2x1.44M, Install 
+//
+installer[v1.1-2x1.44m-install]:
+    name = v1.1, 2x1.44M, Install 
+    installid = v1.1
+    mips = $(MIPS_MAX)
+    launch = DREAMM.BAT
+    anchorfile = BIO123.2
+    file[]: crc = bcbeda8d; size =    657408; name = BIO123.1
+    file[]: crc = 00a2033e; size =    985494; name = BIO123.2
+end
+
+end

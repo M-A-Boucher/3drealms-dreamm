@@ -1,0 +1,89 @@
+//
+// Cosmo’s Cosmic Adventure
+//
+desc[apog-cosmo]:
+
+name = Cosmo’s Cosmic Adventure
+icon = apog-cosmo.png
+machine = pc
+osenv = dos
+rootpath = C:\
+mips = $(MIPS_386SX_20)
+nothrottle = 2
+ramkb = 1024
+filter = apogee software, action
+audiohw = adlib
+
+//
+// adventure configuration
+//
+config[adventure]:
+    title = Adventure Configuration
+    option[adventure1]:
+        name = Adventure 1
+        condition = file_exists("$$(rootpath)\\COSMO1.EXE")
+        launch = COSMO1.EXE
+    end
+    option[adventure2]:
+        name = Adventure 2
+        condition = file_exists("$$(rootpath)\\COSMO2.EXE")
+        launch = COSMO2.EXE
+    end
+    option[adventure3]:
+        name = Adventure 3
+        condition = file_exists("$$(rootpath)\\COSMO3.EXE")
+        launch = COSMO3.EXE
+    end
+end
+
+//
+// graphics configuration
+//
+config[graphics]:
+    title = Graphics Configuration
+    option[ega]:
+        name = $(EGA_NAME); priority = 1
+        videohw = ega
+    end
+    option[vga]:
+        name = $(VGA_NAME)
+        videohw = vga
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
+// v1.2 
+//
+game[v1.2]:
+    name = v1.2
+    anchorfile = COSMO1.EXE
+    file[]: crc = 28cd1c72; size =     62081; name = COSMO1.EXE
+    file[]: crc = a2f80144; size =    607004; name = COSMO1.STN
+    file[]: crc = 504d18a7; size =   1359939; name = COSMO1.VOL
+    file[]: crc = a24f99f2; size =     58805; name = COSMO2.EXE
+    file[]: crc = a2f80144; size =    607004; name = COSMO2.STN
+    file[]: crc = e3ade97e; size =   1308939; name = COSMO2.VOL
+    file[]: crc = 8f4ab2c6; size =    119078; name = COSMO3.EXE
+    file[]: crc = a2f80144; size =    607004; name = COSMO3.STN
+    file[]: crc = d9a3d97c; size =   1267305; name = COSMO3.VOL
+end
+
+//
+// v1.2, 1x1.44M, Install 
+//
+installer[v1.2-1x1.44m-install]:
+    name = v1.2, 1x1.44M, Install 
+    installid = v1.2
+    mips = $(MIPS_MAX)
+    launch = COSMO123.EXE
+    anchorfile = COSMO123.EXE
+    file[]: crc = c4a7609d; size =   1345051; name = COSMO123.EXE
+end
+
+end
