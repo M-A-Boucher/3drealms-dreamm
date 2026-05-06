@@ -9,3 +9,7 @@ Alternatively:
 
 3. Click on **View DREAMMPack Folder**.
 4. Copy the 3drealms.dreammpack file to this folder, close and relaunch DREAMM.
+
+# Other .dreammpacks
+- Sierra: https://github.com/M-A-Boucher/sierra-dreamm
+- id Software: https://github.com/M-A-Boucher/idsoftware-dreamm
