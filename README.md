@@ -11,5 +11,6 @@ Alternatively:
 4. Copy the 3drealms.dreammpack file to this folder, close and relaunch DREAMM.
 
 # Other .dreammpacks
-- Sierra: https://github.com/M-A-Boucher/sierra-dreamm
+- Humongous Entertainment: https://github.com/Phredreeke/humongous-dreamm
 - id Software: https://github.com/M-A-Boucher/idsoftware-dreamm
+- Sierra: https://github.com/M-A-Boucher/sierra-dreamm
