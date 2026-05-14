@@ -475,7 +475,7 @@ fragment[v1.x-base]:
     file[]: crc = f8dbc57d; size =     27153; name = SETUP.EXE
     file[]: crc = 436f0241; size =      9632; name = SW.PCX
     file[]: crc = 85d116fd; size =    267626; name = SW.RTS
-    file[]: crc = fb3c540d; size =      6975; name = ULTRAMID.INI
+    file[]: crc = fb3c540d; size =      6975; name = ULTRAMID.INI; optional = true
 end
 
 //
@@ -508,7 +508,18 @@ game[v1.2]:
     file[]: crc = 01cad068; size =   2323389; name = SW.EXE
     file[]: crc = 7545319f; size =  47536148; name = SW.GRP
     file[]: crc = e642446e; size =     79378; name = SWHELP.EXE
-    file[]:                                   name = CD\CDDA.SOU; cdda = 180/70/187/227/200/160/214/220/230/241/256/305/152
+    file[]:                                   name = CD\CDDA.SOU ; cdda = 180/70/187/227/200/160/214/220/230/241/256/305/152
+end
+
+//
+// v1.2, UK
+//
+game[v1.2-uk]:
+    name = v1.2, UK
+    imports = v1.2
+    anchorfile = SW.EXE
+    file[]: crc = c6942772; size =   2341005; name = SW.EXE
+    file[]: crc = 3ee68767; size =  47536148; name = SW.GRP
 end
 
 //
