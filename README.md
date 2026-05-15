@@ -1,4 +1,4 @@
-<img width="2440" height="540" alt="dreammpackbanner3dr" src="https://github.com/user-attachments/assets/d66ed16c-ec7d-424b-9220-84b4450af0bc" />
+<img width="2440" height="540" alt="3D Realms Dreammpack Banner" src="https://github.com/user-attachments/assets/9c3a9932-6bbb-4f30-bc22-120cb54d5316" />
 
 # How to use this .dreammpack with DREAMM
 1. Download the latest here: https://github.com/M-A-Boucher/3drealms-dreamm/releases/latest/download/3drealms.dreammpack
