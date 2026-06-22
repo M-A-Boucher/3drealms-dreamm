@@ -1,0 +1,97 @@
+//
+// Death Rally
+//
+desc[apog-deathrally]:
+
+name = Death Rally
+icon = apog-deathrally.png
+machine = pc
+osenv = dos
+rootpath = C:\
+launch = $(rootpath)\RALLY.EXE
+mips = $(MIPS_P100)
+ramkb = 16384
+videohw = svga
+audiohw = sb16
+filter = apogee, driving
+
+//
+// sound configuration
+//
+config[sound]:
+    title = Sound Configuration
+    option[none]:
+        name = No Sound (for testing)
+        SOUND_CONFIG = 0
+    end
+    option[sb16]:
+        name = $(SB16_NAME)
+        audiohw = sb16
+        SOUND_CONFIG = 0x18
+    end
+end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
+
+dynamicfile[]:
+    path = $(rootpath)\CDROM.INI
+    contents = [[[$(CRLF)
+        D:\CINEM\
+    ]]]
+end
+
+dynamicfile[]:
+    path = $(rootpath)\DR.CFG
+    contents = [[[
+        [[BINARY: $(SOUND_CONFIG) 0x07 0x01 0x20 0x02 0 0]]
+    ]]]
+end
+
+//
+// 1996, CD
+//
+game[dr]:
+    name = 1996, CD
+    anchorfile = RALLY.EXE
+    anchordepth = 1
+    file[]: crc = 75b97e11; size =     50518; name = DRHELP.EXE  ; optional = true
+    file[]: crc = fe03dda8; size =    387193; name = ENGINE.BPA
+    file[]: crc = bee4bf04; size =     85989; name = IBFILES.BPA
+    file[]: crc = 9fba0731; size =      4797; name = LICENSE.DOC ; optional = true
+    file[]: crc = 125f34fb; size =   3168933; name = MENU.BPA
+    file[]: crc = d55a45d8; size =   5726559; name = MUSICS.BPA
+    file[]: crc = 061b14af; size =    374621; name = RALLY.EXE
+    file[]: crc = 4933689f; size =     34227; name = SETUP.EXE   ; optional = true
+    file[]: crc = e5f1bcbf; size =      4616; name = STORY.TXT   ; optional = true
+    file[]: crc = 18a29274; size =    337303; name = TR0.BPA
+    file[]: crc = 9e4330a0; size =    321394; name = TR1.BPA
+    file[]: crc = 35a834cd; size =    294365; name = TR2.BPA
+    file[]: crc = efda2219; size =    345851; name = TR3.BPA
+    file[]: crc = a527e402; size =    260466; name = TR4.BPA
+    file[]: crc = 068f3f8e; size =    431992; name = TR5.BPA
+    file[]: crc = 3fbae170; size =    359368; name = TR6.BPA
+    file[]: crc = 544e655d; size =    417431; name = TR7.BPA
+    file[]: crc = 03e18b2e; size =    253202; name = TR8.BPA
+    file[]: crc = a666efdb; size =    427555; name = TR9.BPA
+
+    file[]: crc = fc660209; size =       156; name = CD\DISC.ID     ; optional = true
+    file[]: crc = 546d2e34; size =       419; name = CD\EUREADME.TXT; optional = true
+    file[]: crc = 647adeb5; size =    143353; name = CD\INST.EXE    ; optional = true
+    file[]: crc = 69833cae; size =       390; name = CD\INSTALL.BAT ; optional = true
+    file[]: crc = b36fb690; size =      2768; name = CD\INSTALL.TXT ; optional = true
+    file[]: crc = c8fcf811; size =      4797; name = CD\LICENSE.DOC ; optional = true
+    file[]: crc = 6769571c; size =     11697; name = CD\RALLY.PCX   ; optional = true
+    file[]: crc = 4dd4054f; size =       932; name = CD\README.HTM  ; optional = true
+    file[]: crc = 12059b59; size = 479985668; name = CD\CINEM\DR.IDF
+    file[]: crc = 8a59b440; size =   3796331; name = CD\CINEM\ENDANI.HAF
+    file[]: crc = 1497a2ce; size =   7193340; name = CD\CINEM\ENDANI0.HAF
+    file[]: crc = ecf22897; size =  21516352; name = CD\CINEM\SANIM.HAF
+end
+
+
+end
