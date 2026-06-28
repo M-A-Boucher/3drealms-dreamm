@@ -606,7 +606,7 @@ end
 //
 // v1.5 Atomic Edition, SE
 //
-game[v1.5W]:
+game[v1.5w]:
     name = v1.5 Atomic Edition, SE
     imports = v1.5
     anchorfile = DUKE3D.EXE
