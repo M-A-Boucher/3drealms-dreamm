@@ -482,7 +482,7 @@ end
 //
 // v1.3D
 //
-game[v1.3D]:
+game[v1.3d]:
     name = v1.3D
     SETUP_VERSION = SetupVersion = "1.3D"
     anchorfile = DUKE3D.EXE
@@ -505,10 +505,10 @@ end
 //
 // v1.3D, Korean
 //
-game[v1.3D-kr]:
+game[v1.3d-kr]:
     name = v1.3D, Korean
     SETUP_VERSION = SetupVersion = "1.3D"
-    imports = v1.3D
+    imports = v1.3d
     anchorfile = DUKE3D.EXE
     file[]: crc = 399d5e57; size =   1179131; name = DUKE3D.1
     file[]: crc = 9eb379cf; size =      4000; name = DUKE3D.BIN
@@ -522,7 +522,7 @@ end
 //
 upgrader[v1.4]:
     name = v1.4, Plutonium Pack
-    upgradeids = v1.3D
+    upgradeids = v1.3d
     SETUP_VERSION = SetupVersion = "1.4"
     launch = INST.EXE
     anchorfile = INST.EXE
@@ -584,7 +584,7 @@ game[v1.5]:
         WeaponChoice8 = 9
         WeaponChoice9 = 1
     ]]]
-    imports = v1.3D
+    imports = v1.3d
     anchorfile = DUKE3D.EXE
     anchordepth = 1
     file[]: crc = 80deedcc; size =     76554; name = COMMIT.EXE
