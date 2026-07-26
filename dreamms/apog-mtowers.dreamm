@@ -29,19 +29,17 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        INSTALL.EXE
-        MT_123.EXE
+INSTALL = [[[$(CRLF)
+    INSTALL.EXE
+    MT_123.EXE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
     ]]]
 end
-
-//
-// filesystem
-//
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 
 script[autoinstall]:
     condition = is_installer()
@@ -54,6 +52,12 @@ script[autoinstall]:
 end
 
 //
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
+
+//
 // v1.1 
 //
 game[v1.1]:
@@ -64,10 +68,10 @@ game[v1.1]:
 end
 
 //
-// v1.1, 1x1.44M, Install 
+// v1.1, 1x1.44M, Installer
 //
-installer[v1.1-1x1.44m-install]:
-    name = v1.1, 1x1.44M, Install 
+installer[v1.1-1x1.44m-installer]:
+    name = v1.1, 1x1.44M, Installer
     installid = v1.1
     mips = $(MIPS_MAX)
     launch = DREAMM.BAT

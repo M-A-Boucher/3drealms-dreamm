@@ -126,41 +126,55 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\SETUP.INI
-    contents = [[[$(CRLF)
-        [Setup]
-        Detail=1
-        $(CONTROL_CONFIG)
+INI = [[[$(CRLF)
+    [Keyboard]
+    MoveUp=72
+    MoveDn=80
+    MoveLeft=75
+    MoveRight=77
+    Fire=29
+    FireSp=56
+    ChangeSp=57
+    MegaFire=54
 
-        [Music]
-        Volume=85
-        $(MUSIC_CONFIG)
+    [Mouse]
+    Fire=0
+    FireSp=1
+    ChangeSp=2
 
-        [SoundFX]
-        Volume=85
-        $(SOUND_CONFIG)
+    [JoyStick]
+    Fire=0
+    FireSp=1
+    ChangeSp=2
+    MegaFire=3
 
-        [Keyboard]
-        MoveUp=72
-        MoveDn=80
-        MoveLeft=75
-        MoveRight=77
-        Fire=29
-        FireSp=56
-        ChangeSp=57
-        MegaFire=54
+    [Setup]
+    Detail=1
+    $(CONTROL_CONFIG)
 
-        [Mouse]
-        Fire=0
-        FireSp=1
-        ChangeSp=2
+    [Music]
+    Volume=85
+    $(MUSIC_CONFIG)
 
-        [JoyStick]
-        Fire=0
-        FireSp=1
-        ChangeSp=2
-        MegaFire=3
+    [SoundFX]
+    Volume=85
+    $(SOUND_CONFIG)
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        file = "$$(rootpath)\\SETUP.INI";
+
+        if (file_exists(file))
+        {
+          content = file_load_string(file);
+          content = substr(content, 0, strstr(content, "Control=")) + "$$(CONTROL_CONFIG)$$(CRLF)[Music]$$(CRLF)Volume=85$$(CRLF)$$(MUSIC_CONFIG)$$(CRLF)[SoundFX]$$(CRLF)Volume=85$$(CRLF)$$(SOUND_CONFIG)";
+        }
+        else
+        {
+          content = "$$(INI)";
+        }
+        file_save(file, content);
     ]]]
 end
 

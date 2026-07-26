@@ -8,10 +8,81 @@ icon = 3dr-duke3d.png
 machine = pc
 osenv = dos
 rootpath = C:\
-launch = $(rootpath)\DUKE3D.EXE
+launch = $(rootpath)\DUKE3D.EXE "$(LEVEL) $(SKILL)"
 mips = $(MIPS_MAX)
 ramkb = 16384
 filter = 3drealms, fps
+LEVEL = ""
+SKILL = ""
+GAMEMODE = 0
+ATOMIC = 0
+
+//
+// Skill Select
+//
+config[skill]:
+	title = Skill Select
+		condition =  is_game()
+		option[skill-none]: name = Normal Start; SKILL = ""; LEVEL = ""; GAMEMODE = 0
+		option[skill-1]: name = Piece of Cake (SKILL 0); SKILL = "/s0"; GAMEMODE = 1
+		option[skill-2]: name = Let's Rock (SKILL 1); SKILL = "/s1"; GAMEMODE = 1
+		option[skill-3]: name = Come Get Some (SKILL 2); SKILL = "/s2"; GAMEMODE = 1
+		option[skill-4]: name = Damn I'm Good (SKILL 3); SKILL = "/s3"; GAMEMODE = 1
+		
+end
+
+//
+// Map Select
+//
+config[map]:
+	title = Map Select
+		condition = $(GAMEMODE) > 0
+		option[e1m1]: name = E1M1 Hollywood Holocaust; LEVEL = "/l1 /v1"
+		option[e1m2]: name = E1M2 Red Light District; LEVEL = "/l2 /v1"
+		option[e1m3]: name = E1M3 Deathrow; LEVEL = "/l3 /v1"
+		option[e1m4]: name = E1M4 Toxic Dump; LEVEL = "/l4 /v1"
+		option[e1m5]: name = E1M5 The Abyss; LEVEL = "/l5 /v1"
+		option[e1m6]: name = E1M6 Launch Facility; LEVEL = "/l6 /v1"
+		option[e1m7]: name = E1M7 Faces of Death; LEVEL = "/l7 /v1"
+		option[e1m8]: name = E1M8 Dukematch Level 1; LEVEL = "/l8 /v1"
+		
+		option[e2m1]: name = E2M1 Spaceport; LEVEL = "/l1 /v2"; condition = is_game()
+		option[e2m2]: name = E2M2 Incubator; LEVEL = "/l2 /v2"; condition = is_game()
+		option[e2m3]: name = E2M3 Warp Factor; LEVEL = "/l3 /v2"; condition = is_game()
+		option[e2m4]: name = E2M4 Fusion Station; LEVEL = "/l4 /v2"; condition = is_game()
+		option[e2m5]: name = E2M5 Occupied Territory; LEVEL = "/l5 /v2"; condition = is_game()
+		option[e2m6]: name = E2M6 Tiberius Station; LEVEL = "/l6 /v2"; condition = is_game()
+		option[e2m7]: name = E2M7 Lunar Reactor; LEVEL = "/l7 /v2"; condition = is_game()
+		option[e2m8]: name = E2M8 Dark Side; LEVEL = "/l8 /v2"; condition = is_game()
+		option[e2m9]: name = E2M9 Overlord; LEVEL = "/l9 /v2"; condition = is_game()
+		option[e2m10]: name = E2M10 Spin Cycle; LEVEL = "/l10 /v2"; condition = is_game()
+		option[e2m11]: name = E2M11 Lunatic Fringe; LEVEL = "/l11 /v2"; condition = is_game()
+		
+		option[e3m1]: name = E3M1 Raw Meat; LEVEL = "/l1 /v3"; condition = is_game()
+		option[e3m2]: name = E3M2 Bank Roll; LEVEL = "/l2 /v3"; condition = is_game()
+		option[e3m3]: name = E3M3 Flood Zone; LEVEL = "/l3 /v3"; condition = is_game()
+		option[e3m4]: name = E3M4 L.A. Rumble; LEVEL = "/l4 /v3"; condition = is_game()
+		option[e3m5]: name = E3M5 Movie Set; LEVEL = "/l5 /v3"; condition = is_game()
+		option[e3m6]: name = E3M6 Rabid Transit; LEVEL = "/l6 /v3"; condition = is_game()
+		option[e3m7]: name = E3M7 Fahrenheit; LEVEL = "/l7 /v3"; condition = is_game()
+		option[e3m8]: name = E3M8 Hotel Hell; LEVEL = "/l8 /v3"; condition = is_game()
+		option[e3m9]: name = E3M9 Stadium; LEVEL = "/l9 /v3"; condition = is_game()
+		option[e3m10]: name = E3M10 Tier Drops; LEVEL = "/l10 /v3"; condition = is_game()
+		option[e3m11]: name = E3M11 Freeway; LEVEL = "/l11 /v3"; condition = is_game()
+		
+		option[e4m1]: name = E4M1 It's Impossible; LEVEL = "/l1 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m2]: name = E4M2 Duke-Burger; LEVEL = "/l2 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m3]: name = E4M3 Shop-N-Bag; LEVEL = "/l3 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m4]: name = E4M4 Babe Land; LEVEL = "/l4 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m5]: name = E4M5 Pigsty; LEVEL = "/l5 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m6]: name = E4M6 Going Postal; LEVEL = "/l6 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m7]: name = E4M7 XXX-Stacy; LEVEL = "/l7 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m8]: name = E4M8 Critical Mass; LEVEL = "/l8 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m9]: name = E4M9 Derelict; LEVEL = "/l9 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m10]: name = E4M10 The Queen; LEVEL = "/l10 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+		option[e4m11]: name = E4M11 Area 51; LEVEL = "/l11 /v4"; condition = ("$$(ATOMIC)" == 1) && is_game()
+				
+end
 
 //
 // controls configuration
@@ -202,241 +273,247 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DUKE3D.CFG
-    contents = [[[$(CRLF)
-        [Setup]
-        ;Setup File for Duke Nukem 3D
-        $(SETUP_VERSION)
-        ; 
-        ;
-        [Screen Setup]
-        ; 
-        ; 
-        ;ScreenMode
-        ; - Chained - 0
-        ; - Vesa 2.0 - 1
-        ; - Screen Buffered - 2
-        ; - Tseng optimized - 3
-        ; - Paradise optimized - 4
-        ; - S3 optimized - 5
-        ; - RedBlue Stereo - 7
-        ; - Crystal Eyes - 6
-        ; 
-        ;ScreenWidth passed to engine
-        ; 
-        ;ScreenHeight passed to engine
-        ; 
-        ; 
-        $(VIDEO_CONFIG)
-        ; 
-        ; 
-        [Sound Setup]
-        ; 
-        ;MusicDevice
-        ; - No device           - 13
-        ; - PC-Speaker (N/A)    - 12
-        ; - Tandy Sound System  - 11
-        ; - Disney Sound System - 10
-        ; - Gravis Ultra Sound  - 9
-        ; - Ensoniq Soundscape  - 8
-        ; - WaveBlaster         - 7
-        ; - SB AWE 32           - 6
-        ; - Sound Canvas        - 5
-        ; - General Midi        - 4
-        ; - Adlib               - 3
-        ; - Sound Man 16        - 2
-        ; - Pro Audio Spectrum  - 1
-        ; - Sound Blaster       - 0
-        ;
-        ;
-        ;FxDevice
-        ; - No device           - 13
-        ; - PC-Speaker (N/A)    - 12
-        ; - Tandy Sound System  - 11
-        ; - Disney Sound System - 10
-        ; - Gravis Ultra Sound  - 9
-        ; - Ensoniq Soundscape  - 8
-        ; - SB AWE 32           - 6
-        ; - Sound Man 16        - 2
-        ; - Pro Audio Spectrum  - 1
-        ; - Sound Blaster       - 0
-        ;
-        ;
-        FXDevice = 0
-        $(MUSIC_CONFIG)
-        FXVolume = 220
-        MusicVolume = 200
-        NumVoices = 8
-        NumChannels = 2
-        NumBits = 16
-        MixRate = 22000
-        MidiPort = 0x330
-        BlasterAddress = 0x220
-        BlasterType = 6
-        BlasterInterrupt = 7
-        BlasterDma8 = 1
-        BlasterDma16 = 5
-        BlasterEmu = 0x620
-        ReverseStereo = 0
-        ; 
-        ; 
-        [KeyDefinitions]
-        ; 
-        ; 
-        ; Set through DREAMM
-        $(KEYBINDS)
-        Weapon_1 = "1" ""
-        Weapon_2 = "2" ""
-        Weapon_3 = "3" ""
-        Weapon_4 = "4" ""
-        Weapon_5 = "5" ""
-        Weapon_6 = "6" ""
-        Weapon_7 = "7" ""
-        Weapon_8 = "8" ""
-        Weapon_9 = "9" ""
-        Weapon_10 = "0" ""
-        Inventory = "Enter" "KpdEnt"
-        Inventory_Left = "[" ""
-        Inventory_Right = "]" ""
-        Holo_Duke = "H" ""
-        Jetpack = "J" ""
-        NightVision = "N" ""
-        MedKit = "M" ""
-        TurnAround = "BakSpc" ""
-        SendMessage = "T" ""
-        Map = "Tab" ""
-        Shrink_Screen = "-" "Kpad-"
-        Enlarge_Screen = "=" "Kpad+"
-        Center_View = "KPad5" ""
-        Holster_Weapon = "ScrLck" ""
-        Show_Opponents_Weapon = "W" ""
-        Map_Follow_Mode = "F" ""
-        See_Coop_View = "K" ""
-        Mouse_Aiming = "U" ""
-        Toggle_Crosshair = "I" ""
-        Steroids = "R" ""
-        Quick_Kick = "`" ""
-        Next_Weapon = "E" ""
-        Previous_Weapon = "Q" ""
-        ; 
-        ; 
-        [Controls]
-        ; 
-        ; 
-        ;Controls
-        ; 
-        ;ControllerType
-        ; - Keyboard                  - 0
-        ; - Keyboard and Mouse        - 1
-        ; - Keyboard and Joystick     - 2
-        ; - Keyboard and Gamepad      - 4
-        ; - Keyboard and External     - 3
-        ; - Keyboard and FlightStick  - 5
-        ; - Keyboard and ThrustMaster - 6
-        ; 
-        ; 
-        ControllerType = 1
-        JoystickPort = 0
-        MouseSensitivity = 49152
-        ExternalFilename = "EXTERNAL.EXE"
-        EnableRudder = 0
-        ; Set through DREAMM
-        $(MOUSEBINDS)
-        JoystickButton0 = "Fire"
-        JoystickButtonClicked0 = ""
-        JoystickButton1 = "Strafe"
-        JoystickButtonClicked1 = "Inventory"
-        JoystickButton2 = "Run"
-        JoystickButtonClicked2 = "Jump"
-        JoystickButton3 = "Open"
-        JoystickButtonClicked3 = "Crouch"
-        JoystickButton4 = "Aim_Down"
-        JoystickButtonClicked4 = ""
-        JoystickButton5 = "Look_Right"
-        JoystickButtonClicked5 = ""
-        JoystickButton6 = "Aim_Up"
-        JoystickButtonClicked6 = ""
-        JoystickButton7 = "Look_Left"
-        JoystickButtonClicked7 = ""
-        MouseAnalogAxes0 = "analog_turning"
-        MouseDigitalAxes0_0 = ""
-        MouseDigitalAxes0_1 = ""
-        MouseAnalogScale0 = 65536
-        MouseAnalogAxes1 = "analog_moving"
-        MouseDigitalAxes1_0 = ""
-        MouseDigitalAxes1_1 = ""
-        JoystickAnalogAxes0 = "analog_turning"
-        JoystickDigitalAxes0_0 = ""
-        JoystickDigitalAxes0_1 = ""
-        JoystickAnalogScale0 = 65536
-        JoystickAnalogAxes1 = "analog_moving"
-        JoystickDigitalAxes1_0 = ""
-        JoystickDigitalAxes1_1 = ""
-        JoystickAnalogScale1 = 65536
-        JoystickAnalogAxes2 = "analog_strafing"
-        JoystickDigitalAxes2_0 = ""
-        JoystickDigitalAxes2_1 = ""
-        JoystickAnalogScale2 = 65536
-        JoystickAnalogAxes3 = ""
-        JoystickDigitalAxes3_0 = "Run"
-        JoystickDigitalAxes3_1 = ""
-        JoystickAnalogScale3 = 65536
-        GamePadDigitalAxes0_0 = "Turn_Left"
-        GamePadDigitalAxes0_1 = "Turn_Right"
-        GamePadDigitalAxes1_0 = "Move_Forward"
-        GamePadDigitalAxes1_1 = "Move_Backward"
-        ; 
-        ; 
-        [Comm Setup]
-        ; 
-        ; 
-        ComPort = 2
-        IrqNumber = ~
-        UartAddress = ~
-        PortSpeed = 9600
-        ToneDial = 1
-        SocketNumber = ~
-        NumberPlayers = 2
-        ModemName = ""
-        InitString = "ATZ"
-        HangupString = "ATH0=0"
-        DialoutString = ""
-        PlayerName = "DUKE"
-        RTSName = "DUKE.RTS"
-        PhoneNumber = ""
-        ConnectType = 0
-        CommbatMacro#0 = "An inspiration for birth control."
-        CommbatMacro#1 = "You're gonna die for that!"
-        CommbatMacro#2 = "It hurts to be you."
-        CommbatMacro#3 = "Lucky Son of a Bitch."
-        CommbatMacro#4 = "Hmmm....Payback time."
-        CommbatMacro#5 = "You bottom dwelling scum sucker."
-        CommbatMacro#6 = "Damn, you're ugly."
-        CommbatMacro#7 = "Ha ha ha...Wasted!"
-        CommbatMacro#8 = "You suck!"
-        CommbatMacro#9 = "AARRRGHHHHH!!!"
-        PhoneName#0 = ""
-        PhoneNumber#0 = ""
-        PhoneName#1 = ""
-        PhoneNumber#1 = ""
-        PhoneName#2 = ""
-        PhoneNumber#2 = ""
-        PhoneName#3 = ""
-        PhoneNumber#3 = ""
-        PhoneName#4 = ""
-        PhoneNumber#4 = ""
-        PhoneName#5 = ""
-        PhoneNumber#5 = ""
-        PhoneName#6 = ""
-        PhoneNumber#6 = ""
-        PhoneName#7 = ""
-        PhoneNumber#7 = ""
-        PhoneName#8 = ""
-        PhoneNumber#8 = ""
-        PhoneName#9 = ""
-        PhoneNumber#9 = ""
-        $(EXTRA_ATOMIC_CONFIGS)
+CFG = [[[$(CRLF)
+    [Setup]
+    ;Setup File for Duke Nukem 3D
+    $(SETUP_VERSION)
+    ; 
+    ;
+    [Screen Setup]
+    ; 
+    ; 
+    ;ScreenMode
+    ; - Chained - 0
+    ; - Vesa 2.0 - 1
+    ; - Screen Buffered - 2
+    ; - Tseng optimized - 3
+    ; - Paradise optimized - 4
+    ; - S3 optimized - 5
+    ; - RedBlue Stereo - 7
+    ; - Crystal Eyes - 6
+    ; 
+    ;ScreenWidth passed to engine
+    ; 
+    ;ScreenHeight passed to engine
+    ; 
+    ; 
+    $(VIDEO_CONFIG)
+    ; 
+    ; 
+    [Sound Setup]
+    ; 
+    ;MusicDevice
+    ; - No device           - 13
+    ; - PC-Speaker (N/A)    - 12
+    ; - Tandy Sound System  - 11
+    ; - Disney Sound System - 10
+    ; - Gravis Ultra Sound  - 9
+    ; - Ensoniq Soundscape  - 8
+    ; - WaveBlaster         - 7
+    ; - SB AWE 32           - 6
+    ; - Sound Canvas        - 5
+    ; - General Midi        - 4
+    ; - Adlib               - 3
+    ; - Sound Man 16        - 2
+    ; - Pro Audio Spectrum  - 1
+    ; - Sound Blaster       - 0
+    ;
+    ;
+    ;FxDevice
+    ; - No device           - 13
+    ; - PC-Speaker (N/A)    - 12
+    ; - Tandy Sound System  - 11
+    ; - Disney Sound System - 10
+    ; - Gravis Ultra Sound  - 9
+    ; - Ensoniq Soundscape  - 8
+    ; - SB AWE 32           - 6
+    ; - Sound Man 16        - 2
+    ; - Pro Audio Spectrum  - 1
+    ; - Sound Blaster       - 0
+    ;
+    ;
+    FXDevice = 0
+    $(MUSIC_CONFIG)
+    FXVolume = 220
+    MusicVolume = 200
+    NumVoices = 8
+    NumChannels = 2
+    NumBits = 16
+    MixRate = 22000
+    MidiPort = 0x330
+    BlasterAddress = 0x220
+    BlasterType = 6
+    BlasterInterrupt = 7
+    BlasterDma8 = 1
+    BlasterDma16 = 5
+    BlasterEmu = 0x620
+    ReverseStereo = 0
+    ; 
+    ; 
+    [KeyDefinitions]
+    ; 
+    ; 
+    ; Set through DREAMM
+    $(KEYBINDS)
+    Weapon_1 = "1" ""
+    Weapon_2 = "2" ""
+    Weapon_3 = "3" ""
+    Weapon_4 = "4" ""
+    Weapon_5 = "5" ""
+    Weapon_6 = "6" ""
+    Weapon_7 = "7" ""
+    Weapon_8 = "8" ""
+    Weapon_9 = "9" ""
+    Weapon_10 = "0" ""
+    Inventory = "Enter" "KpdEnt"
+    Inventory_Left = "[" ""
+    Inventory_Right = "]" ""
+    Holo_Duke = "H" ""
+    Jetpack = "J" ""
+    NightVision = "N" ""
+    MedKit = "M" ""
+    TurnAround = "BakSpc" ""
+    SendMessage = "T" ""
+    Map = "Tab" ""
+    Shrink_Screen = "-" "Kpad-"
+    Enlarge_Screen = "=" "Kpad+"
+    Center_View = "KPad5" ""
+    Holster_Weapon = "ScrLck" ""
+    Show_Opponents_Weapon = "W" ""
+    Map_Follow_Mode = "F" ""
+    See_Coop_View = "K" ""
+    Mouse_Aiming = "U" ""
+    Toggle_Crosshair = "I" ""
+    Steroids = "R" ""
+    Quick_Kick = "`" ""
+    Next_Weapon = "E" ""
+    Previous_Weapon = "Q" ""
+    ; 
+    ; 
+    [Controls]
+    ; 
+    ; 
+    ;Controls
+    ; 
+    ;ControllerType
+    ; - Keyboard                  - 0
+    ; - Keyboard and Mouse        - 1
+    ; - Keyboard and Joystick     - 2
+    ; - Keyboard and Gamepad      - 4
+    ; - Keyboard and External     - 3
+    ; - Keyboard and FlightStick  - 5
+    ; - Keyboard and ThrustMaster - 6
+    ; 
+    ; 
+    ControllerType = 1
+    JoystickPort = 0
+    MouseSensitivity = 49152
+    ExternalFilename = "EXTERNAL.EXE"
+    EnableRudder = 0
+    ; Set through DREAMM
+    $(MOUSEBINDS)
+    JoystickButton0 = "Fire"
+    JoystickButtonClicked0 = ""
+    JoystickButton1 = "Strafe"
+    JoystickButtonClicked1 = "Inventory"
+    JoystickButton2 = "Run"
+    JoystickButtonClicked2 = "Jump"
+    JoystickButton3 = "Open"
+    JoystickButtonClicked3 = "Crouch"
+    JoystickButton4 = "Aim_Down"
+    JoystickButtonClicked4 = ""
+    JoystickButton5 = "Look_Right"
+    JoystickButtonClicked5 = ""
+    JoystickButton6 = "Aim_Up"
+    JoystickButtonClicked6 = ""
+    JoystickButton7 = "Look_Left"
+    JoystickButtonClicked7 = ""
+    MouseAnalogAxes0 = "analog_turning"
+    MouseDigitalAxes0_0 = ""
+    MouseDigitalAxes0_1 = ""
+    MouseAnalogScale0 = 65536
+    MouseAnalogAxes1 = "analog_moving"
+    MouseDigitalAxes1_0 = ""
+    MouseDigitalAxes1_1 = ""
+    JoystickAnalogAxes0 = "analog_turning"
+    JoystickDigitalAxes0_0 = ""
+    JoystickDigitalAxes0_1 = ""
+    JoystickAnalogScale0 = 65536
+    JoystickAnalogAxes1 = "analog_moving"
+    JoystickDigitalAxes1_0 = ""
+    JoystickDigitalAxes1_1 = ""
+    JoystickAnalogScale1 = 65536
+    JoystickAnalogAxes2 = "analog_strafing"
+    JoystickDigitalAxes2_0 = ""
+    JoystickDigitalAxes2_1 = ""
+    JoystickAnalogScale2 = 65536
+    JoystickAnalogAxes3 = ""
+    JoystickDigitalAxes3_0 = "Run"
+    JoystickDigitalAxes3_1 = ""
+    JoystickAnalogScale3 = 65536
+    GamePadDigitalAxes0_0 = "Turn_Left"
+    GamePadDigitalAxes0_1 = "Turn_Right"
+    GamePadDigitalAxes1_0 = "Move_Forward"
+    GamePadDigitalAxes1_1 = "Move_Backward"
+    ; 
+    ; 
+    [Comm Setup]
+    ; 
+    ; 
+    ComPort = 2
+    IrqNumber = ~
+    UartAddress = ~
+    PortSpeed = 9600
+    ToneDial = 1
+    SocketNumber = ~
+    NumberPlayers = 2
+    ModemName = ""
+    InitString = "ATZ"
+    HangupString = "ATH0=0"
+    DialoutString = ""
+    PlayerName = "DUKE"
+    RTSName = "DUKE.RTS"
+    PhoneNumber = ""
+    ConnectType = 0
+    CommbatMacro#0 = "An inspiration for birth control."
+    CommbatMacro#1 = "You're gonna die for that!"
+    CommbatMacro#2 = "It hurts to be you."
+    CommbatMacro#3 = "Lucky Son of a Bitch."
+    CommbatMacro#4 = "Hmmm....Payback time."
+    CommbatMacro#5 = "You bottom dwelling scum sucker."
+    CommbatMacro#6 = "Damn, you're ugly."
+    CommbatMacro#7 = "Ha ha ha...Wasted!"
+    CommbatMacro#8 = "You suck!"
+    CommbatMacro#9 = "AARRRGHHHHH!!!"
+    PhoneName#0 = ""
+    PhoneNumber#0 = ""
+    PhoneName#1 = ""
+    PhoneNumber#1 = ""
+    PhoneName#2 = ""
+    PhoneNumber#2 = ""
+    PhoneName#3 = ""
+    PhoneNumber#3 = ""
+    PhoneName#4 = ""
+    PhoneNumber#4 = ""
+    PhoneName#5 = ""
+    PhoneNumber#5 = ""
+    PhoneName#6 = ""
+    PhoneNumber#6 = ""
+    PhoneName#7 = ""
+    PhoneNumber#7 = ""
+    PhoneName#8 = ""
+    PhoneNumber#8 = ""
+    PhoneName#9 = ""
+    PhoneNumber#9 = ""
+    $(EXTRA_ATOMIC_CONFIGS)
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (!file_exists("$$(rootpath)\\CDROM.INI"))
+          file_save("$$(rootpath)\\CDROM.INI", "D:\\SUPPORT\\");
+
+        file_save("$$(rootpath)\\DUKE3D.CFG", "$$(CFG)");
     ]]]
 end
 
@@ -446,13 +523,6 @@ end
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath); writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
-
-dynamicfile[]:
-    path = $(rootpath)\CDROM.INI
-    contents = [[[$(CRLF)
-        D:\SUPPORT\
-    ]]]
-end
 
 //
 // v1.1, Demo
@@ -539,6 +609,7 @@ end
 game[v1.5]:
     name = v1.5, Atomic Edition
     SETUP_VERSION = SetupVersion = "1.4"
+    ATOMIC = 1
     EXTRA_ATOMIC_CONFIGS = [[[$(CRLF)
         Shadows = 1
         Password = ""
@@ -609,6 +680,7 @@ end
 game[v1.5w]:
     name = v1.5 Atomic Edition, SE
     imports = v1.5
+    ATOMIC = 1
     anchorfile = DUKE3D.EXE
     anchordepth = 1
     file[]: crc = c99cdb10; size =   1246439; name = DUKE3D.EXE

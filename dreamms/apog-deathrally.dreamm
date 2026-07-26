@@ -12,7 +12,6 @@ launch = $(rootpath)\RALLY.EXE
 mips = $(MIPS_P100)
 ramkb = 16384
 videohw = svga
-audiohw = sb16
 filter = apogee, driving
 
 //
@@ -31,26 +30,19 @@ config[sound]:
     end
 end
 
+script[init]:
+    code = [[[$(CRLF)
+        file_save("$$(rootpath)\\CDROM.INI", "D:\\CINEM\\");
+        file_save("$$(rootpath)\\DR.CFG", "`h:$$(SOUND_CONFIG) 7 5 20 02 0 0");
+    ]]]
+end
+
 //
 // filesystem
 //
 mount[]: vpath = C:\        ; srcpath = $(ifsdeltapath)     ; writable = true;
 mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 mount[]: vpath = D:\        ; srcpath = $(ifsinstallpath)\CD; optional = true
-
-dynamicfile[]:
-    path = $(rootpath)\CDROM.INI
-    contents = [[[$(CRLF)
-        D:\CINEM\
-    ]]]
-end
-
-dynamicfile[]:
-    path = $(rootpath)\DR.CFG
-    contents = [[[
-        [[BINARY: $(SOUND_CONFIG) 0x07 0x01 0x20 0x02 0 0]]
-    ]]]
-end
 
 //
 // 1996, CD
@@ -78,7 +70,6 @@ game[dr]:
     file[]: crc = 544e655d; size =    417431; name = TR7.BPA
     file[]: crc = 03e18b2e; size =    253202; name = TR8.BPA
     file[]: crc = a666efdb; size =    427555; name = TR9.BPA
-
     file[]: crc = fc660209; size =       156; name = CD\DISC.ID     ; optional = true
     file[]: crc = 546d2e34; size =       419; name = CD\EUREADME.TXT; optional = true
     file[]: crc = 647adeb5; size =    143353; name = CD\INST.EXE    ; optional = true
@@ -92,6 +83,5 @@ game[dr]:
     file[]: crc = 1497a2ce; size =   7193340; name = CD\CINEM\ENDANI0.HAF
     file[]: crc = ecf22897; size =  21516352; name = CD\CINEM\SANIM.HAF
 end
-
 
 end

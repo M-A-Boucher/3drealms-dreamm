@@ -34,36 +34,31 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM21.BAT
-    contents = [[[$(CRLF)
-        INSTALL.EXE
-        BS_R.EXE
+INSTALL21 = [[[$(CRLF)
+    INSTALL.EXE
+    BS_R.EXE
+]]]
+
+INSTALL30 = [[[$(CRLF)
+    INSTALL.EXE
+    BLAKER.EXE
+]]]
+
+INSTALL3X = [[[$(CRLF)
+    COPY BS3_1-6.1+BS3_1-6.2+BS3_1-6.3 BS3_1-6.EXE
+    BS3_1-6.EXE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+        {
+          file_save("$$(rootpath)\\DREAMM21.BAT", "$$(INSTALL21)");
+          file_save("$$(rootpath)\\DREAMM30.BAT", "$$(INSTALL30)");
+          file_save("$$(rootpath)\\DREAMM3X.BAT", "$$(INSTALL3X)");
+        }
     ]]]
 end
-
-dynamicfile[]:
-    path = $(rootpath)\DREAMM30.BAT
-    contents = [[[$(CRLF)
-        INSTALL.EXE
-        BLAKER.EXE
-    ]]]
-end
-
-dynamicfile[]:
-    path = $(rootpath)\DREAMM3X.BAT
-    contents = [[[$(CRLF)
-        COPY BS3_1-6.1+BS3_1-6.2+BS3_1-6.3 BS3_1-6.EXE
-        BS3_1-6.EXE
-    ]]]
-end
-
-//
-// filesystem
-//
-mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
-mount[]: vpath = A:\        ; srcpath = ram              ; condition = is_installer(); writable = true
-mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 script[autoinstall]:
     condition = is_installer()
@@ -74,6 +69,13 @@ script[autoinstall]:
         input_lockout(false);
     ]]]
 end
+
+//
+// filesystem
+//
+mount[]: vpath = C:\;         srcpath = $(ifsdeltapath)  ; writable = true;
+mount[]: vpath = A:\        ; srcpath = ram              ; condition = is_installer(); writable = true
+mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath);
 
 //
 // v1.0

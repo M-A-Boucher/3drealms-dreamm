@@ -33,11 +33,15 @@ config[sound]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        COPY DN2_ALL.1+DN2_ALL.2 DN2_ALL.EXE
-        DN2_ALL.EXE
+INSTALL = [[[$(CRLF)
+    COPY DN2_ALL.1+DN2_ALL.2 DN2_ALL.EXE
+    DN2_ALL.EXE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
     ]]]
 end
 

@@ -50,12 +50,16 @@ config[graphics]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        DUKEZIP1.EXE
-        DUKEZIP2.EXE
-        DUKEZIP3.EXE
+INSTALL = [[[$(CRLF)
+    DUKEZIP1.EXE
+    DUKEZIP2.EXE
+    DUKEZIP3.EXE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
     ]]]
 end
 

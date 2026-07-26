@@ -55,11 +55,15 @@ config[graphics]:
     end
 end
 
-dynamicfile[]:
-    path = $(rootpath)\DREAMM.BAT
-    contents = [[[$(CRLF)
-        COPY BIO123.1+BIO123.2 BIO123.EXE
-        BIO123.EXE
+INSTALL = [[[$(CRLF)
+    COPY BIO123.1+BIO123.2 BIO123.EXE
+    BIO123.EXE
+]]]
+
+script[init]:
+    code = [[[$(CRLF)
+        if (is_installer())
+          file_save("$$(rootpath)\\DREAMM.BAT", "$$(INSTALL)");
     ]]]
 end
 
