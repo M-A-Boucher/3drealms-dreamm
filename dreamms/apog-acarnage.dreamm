@@ -31,18 +31,28 @@ config[sound]:
     option[speaker]:
         name = $(SPEAKER_NAME)
         audiohw = speaker
-        AUDIO_CONFIG = 0 0 0 1 0 0 20 02 07 02 64 0 0 0 0 0 14
+        AUDIO_CONFIG = 00 00 00 01 00 00 20 02 07 02 64 00 00 00 00 00 14
     end
     option[sb16]:
         name = $(SB16_NAME)
         audiohw = sb16
-        AUDIO_CONFIG = 2 0 0 0 0 0 20 02 07 02 64 0 0 0 0 0 00
+        AUDIO_CONFIG = 02 00 00 00 00 00 20 02 07 02 64 00 00 00 00 00 00
     end
 end
 
 script[init]:
     code = [[[$(CRLF)
-        file_save("$$(rootpath)\\HARRY.CFG", "`h:$$(AUDIO_CONFIG) 0 2 1 1 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 1 0 4B 4D 48 50 38 1D 0 0 0 0 0");
+        filepath = "$$(rootpath)\\HARRY.CFG";
+
+        if (file_exists(filepath))
+        {
+          file = file_load_blob(file);
+          blob_fill(file, 0, 1, "`h:$$(AUDIO_CONFIG)");
+        }
+        else
+          file = blob_create("`h:$$(AUDIO_CONFIG) 00 02 01 01 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 01 00 4B 4D 48 50 38 1D 00 00 00 00 00");
+
+        file_save(filepath, file);
     ]]]
 end
 
@@ -58,8 +68,8 @@ mount[]: vpath = $(rootpath); srcpath = $(ifsinstallpath)
 game[v1.0]:
     name = v1.0
     anchorfile = CARNAGE.EXE
-    file[]: crc = bf7f1d1e; size =     15597; name = AC-HELP.EXE
-    file[]: crc = f9a897f6; size =     26014; name = CARNAGE.DOC
+    file[]: crc = bf7f1d1e; size =     15597; name = AC-HELP.EXE ; optional = true
+    file[]: crc = f9a897f6; size =     26014; name = CARNAGE.DOC ; optional = true
     file[]: crc = 1b1c36d7; size =      9968; name = CARNAGE.EXE
     file[]: crc = 01532e10; size =      3285; name = DT.1
     file[]: crc = db0db675; size =      3910; name = DT.2
@@ -84,10 +94,47 @@ game[v1.0]:
     file[]: crc = a705066d; size =     40592; name = HARRY9.-0
     file[]: crc = 694de3d6; size =     22896; name = HARRY99.-0
     file[]: crc = c32628ed; size =    292702; name = INTRO.-0
-    file[]: crc = 79a85c20; size =      2623; name = LICENSE.DOC
+    file[]: crc = 79a85c20; size =      2623; name = LICENSE.DOC ; optional = true
     file[]: crc = d103d942; size =    115023; name = MAPS.-0
     file[]: crc = cf29b765; size =     19813; name = ORDER.-0
-    file[]: crc = d6dbdb56; size =      5679; name = ORDER.FRM
+    file[]: crc = d6dbdb56; size =      5679; name = ORDER.FRM   ; optional = true
+    file[]: crc = 4456ff89; size =      4000; name = REGEND.SCR
+    file[]: crc = 4100900b; size =     26540; name = SFX.-0
+end
+
+//
+// Steam (v1.0)
+//
+game[v1.0-steam]:
+    name = Steam (v1.0)
+    anchorfile = CARNAGE.EXE
+    file[]: crc = d94cdb98; size =     27504; name = AC-HELP.EXE ; optional = true
+    file[]: crc = 33fe3c19; size =      9968; name = CARNAGE.EXE
+    file[]: crc = 01532e10; size =      3285; name = DT.1
+    file[]: crc = db0db675; size =      3910; name = DT.2
+    file[]: crc = f3dafa78; size =      5840; name = DT.3
+    file[]: crc = caf88f05; size =      4305; name = DT.4
+    file[]: crc = a5fa0979; size =   1977013; name = HARRY.-0
+    file[]: crc = 810e72f0; size =    462848; name = HARRY.HSB
+    file[]: crc = c326abee; size =     24000; name = HARRY0.-0
+    file[]: crc = 2f6f78d9; size =     17680; name = HARRY1.-0
+    file[]: crc = 782ba675; size =     33488; name = HARRY10.-0
+    file[]: crc = 73c664f7; size =     28064; name = HARRY11.-0
+    file[]: crc = 38c83adc; size =     30560; name = HARRY13.-0
+    file[]: crc = 97157dd7; size =     37776; name = HARRY14.-0
+    file[]: crc = ac5e3907; size =      4096; name = HARRY15.$$$
+    file[]: crc = c258d336; size =     33184; name = HARRY15.-0
+    file[]: crc = 7ff68399; size =     32896; name = HARRY2.-0
+    file[]: crc = 865fdd6c; size =     37680; name = HARRY3.-0
+    file[]: crc = 390a5a7d; size =     29312; name = HARRY4.-0
+    file[]: crc = a67c82a0; size =    110272; name = HARRY5.-0
+    file[]: crc = 83c380d7; size =     18096; name = HARRY7.-0
+    file[]: crc = 97389cf4; size =     36320; name = HARRY8.-0
+    file[]: crc = e4c419f4; size =     40592; name = HARRY9.-0
+    file[]: crc = 1071f041; size =     22896; name = HARRY99.-0
+    file[]: crc = c32628ed; size =    292702; name = INTRO.-0
+    file[]: crc = d103d942; size =    115023; name = MAPS.-0
+    file[]: crc = cf29b765; size =     19813; name = ORDER.-0
     file[]: crc = 4456ff89; size =      4000; name = REGEND.SCR
     file[]: crc = 4100900b; size =     26540; name = SFX.-0
 end
