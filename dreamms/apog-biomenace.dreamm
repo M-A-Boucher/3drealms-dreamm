@@ -129,4 +129,20 @@ installer[v1.1-2x1.44m-install]:
     file[]: crc = 00a2033e; size =    985494; name = BIO123.2
 end
 
+//
+// GOG
+//
+game[gog]:
+    name = GOG
+    imports = v1.1
+    file[]: crc = 79214faa; size =      2207; name = BIOPATCH.ZIP
+    file[]: crc = ab62cbe1; size =     11627; name = BMENACE.conf
+    file[]: crc = d81d1f1f; size =     90046; name = BMENACE1.EXE
+    file[]: crc = b82db8db; size =     89921; name = BMENACE2.EXE
+    file[]: crc = a85c7923; size =     89754; name = BMENACE3.EXE
+    file[]: crc = f8527d64; size =       543; name = CONFIG.BM1
+    file[]: crc = 4ccd9af5; size =       543; name = CONFIG.BM2
+    file[]: crc = ef56dbbc; size =       442; name = FILE_ID.DIZ
+end
+
 end
